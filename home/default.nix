@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   username,
   ...
 }: {
@@ -80,7 +81,49 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # `programs.git` will generate the config file: ~/.config/git/config
+  # to make git use this config file, `~/.gitconfig` should not exist!
+  #
+  #    https://git-scm.com/docs/git-config#Documentation/git-config.txt---global
+  home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
+    rm -f ${config.home.homeDirectory}/.gitconfig
+  '';
+
   programs = {
+    git = {
+      enable = true;
+      lfs.enable = true;
+
+      userName = username;
+      userEmail = "bnbvbchen@gmail.com";
+
+      extraConfig = {
+        core = {
+          quotepath = false;
+        };
+        merge = {
+          conflictstyle = "zdiff3";
+        };
+        diff = {
+          colorMoved = "default";
+        };
+        http = {
+          "https://github.com" = {
+            proxy = "socks5h://127.0.0.1:1080";
+          };
+          "https://codeberg.org" = {
+            proxy = "socks5h://127.0.0.1:1080";
+          };
+          "https://gitlab.com" = {
+            proxy = "socks5h://127.0.0.1:1080";
+          };
+          "https://192.168.11.194" = {
+            sslVerify = false;
+          };
+        };
+      };
+    };
+
     zsh = {
       enable = true;
       enableCompletion = true;

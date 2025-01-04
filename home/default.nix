@@ -147,6 +147,19 @@
       };
 
       # add to ~/.zshrc
+      initExtraBeforeCompInit = ''
+        # homebrew zsh completions
+        fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+      '';
+      completionInit = ''
+        # - https://zsh.sourceforge.io/Doc/Release/Completion-System.html
+        # - https://www.danielmoch.com/posts/2018/11/zsh-compinit-rtfm/
+        # - https://gist.github.com/ctechols/ca1035271ad134841284
+        # - https://medium.com/@dannysmith/little-thing-2-speeding-up-zsh-f1860390f92
+        # NOTE: compinit/compdump is slow if I don't give zcompdump file a name other than ".zcompdump", Why?
+        autoload -Uz compinit
+        compinit -d ~/.zcompdump_2
+      '';
       initExtra = ''
         [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
       '';

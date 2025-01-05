@@ -68,6 +68,9 @@
     fd
     bat # Cat(1) clone with syntax highlighting and Git integration
     xclip # Tool to access the X clipboard from a console application
+    ripgrep
+    gh # GitHub CLI tool
+    htop
 
     # others
     # firefox-devedition
@@ -146,6 +149,15 @@
         uhttp = "unset http_proxy; unset https_proxy;";
       };
 
+      # add to ~/.zshenv
+      envExtra = ''
+        skip_global_compinit=1
+      '';
+
+      # add to ~/.zprofile
+      profileExtra = ''
+      '';
+
       # add to ~/.zshrc
       initExtraBeforeCompInit = ''
         # homebrew zsh completions
@@ -162,10 +174,6 @@
       '';
       initExtra = ''
         [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-      '';
-
-      # add to ~/.zprofile
-      profileExtra = ''
       '';
     };
 
@@ -251,6 +259,13 @@
       '';
     };
 
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+      # mise.enable = true;
+    };
+
     # set JAVA_HOME
     java = {
       enable = true;
@@ -263,5 +278,8 @@
     [global]
     index-url = https://pypi.tuna.tsinghua.edu.cn/simple
     format = columns
+  '';
+  home.file.".npmrc".text = ''
+    registry=https://registry.npmmirror.com
   '';
 }

@@ -95,9 +95,14 @@ in {
     # `brew install`
     brews = [
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
+      # {
+      #   name = "emacs-plus@31";
+      #   args = ["with-xwidgets"];
+      #   link = true;
+      # }
       "poppler"
-      # TODO: https://emacs-china.org/t/nixos-emacs/28181/9
       "libvterm"
+      "tree-sitter"
     ];
 
     # `brew install --cask`

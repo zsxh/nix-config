@@ -23,6 +23,7 @@
   fonts.packages = with pkgs; [
     material-design-icons
     font-awesome
+    fira-code
     nerd-fonts.symbols-only
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono

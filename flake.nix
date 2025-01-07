@@ -4,10 +4,13 @@
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
     substituters = [
-      # Query the mirror of USTC first, and then the official cache.
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
     ];
+    # trusted-public-keys = [
+    #   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    # ];
   };
 
   inputs = {
@@ -20,6 +23,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
   outputs = inputs @ {
@@ -27,14 +31,14 @@
     nixpkgs,
     nix-darwin,
     home-manager,
+    emacs-overlay,
     ...
   }: let
     username = "zsxh";
     specialArgs = inputs // {inherit username;};
   in {
-    # Build darwin flake using:
+    # Build/Switch darwin flake using:
     # $ darwin-rebuild build --flake .#macbook
-    # Update
     # $ nix flake update
     # $ darwin-rebuild switch --flake .#macbook
     darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
@@ -45,6 +49,7 @@
         # home manager
         home-manager.darwinModules.home-manager
         {
+          nixpkgs.overlays = [emacs-overlay.overlay];
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = specialArgs;

@@ -65,7 +65,7 @@ in {
     enable = true;
 
     onActivation = {
-      autoUpdate = true; # Fetch the newest stable branch of Homebrew's git repo
+      autoUpdate = false; # Fetch the newest stable branch of Homebrew's git repo
       upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
       # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
       # cleanup = "zap";
@@ -97,7 +97,7 @@ in {
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
       # {
       #   name = "emacs-plus@31";
-      #   args = ["with-xwidgets"];
+      #   args = [];
       #   link = true;
       # }
       "poppler"
@@ -110,9 +110,8 @@ in {
       # dev tools
       "lm-studio"
       "raycast"
-      "wezterm"
       "orbstack"
-      "wireshark"
+      # "wireshark"
       "visual-studio-code"
 
       # others

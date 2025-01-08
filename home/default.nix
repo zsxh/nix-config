@@ -5,9 +5,8 @@
   username,
   ...
 }: let
-  # NOTE: emacs-mps
-  # https://github.com/nix-community/emacs-overlay/issues/417#issuecomment-2271251234
-  emacsWithoutNativeCompilation = pkgs.emacs-git.override {
+  # NOTE: emacs-mps, https://github.com/nix-community/emacs-overlay/issues/417#issuecomment-2271251234
+  zsxh-emacs = pkgs.emacs-git.override {
     withNativeCompilation = false;
   };
 in {
@@ -22,7 +21,7 @@ in {
 
   home.packages = with pkgs; [
     # editor
-    ((emacsPackagesFor emacsWithoutNativeCompilation).emacsWithPackages (epkgs:
+    ((emacsPackagesFor zsxh-emacs).emacsWithPackages (epkgs:
       with epkgs; [
         vterm
         pdf-tools
@@ -79,10 +78,11 @@ in {
     fastfetch
 
     # others
-    # firefox-devedition
+    # firefox-devedition-unwrapped
     google-chrome
     telegram-desktop
     mpv-unwrapped
+    wireshark
   ];
 
   home.file = {
@@ -278,6 +278,12 @@ in {
       enable = true;
       package = pkgs.jdk23;
     };
+
+    # firefox = {
+    #   enable = true;
+    #   package = pkgs.firefox-devedition-unwrapped;
+    #   languagePacks = ["zh-CN"];
+    # };
   };
 
   # mirror

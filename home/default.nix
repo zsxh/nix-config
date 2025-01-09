@@ -19,71 +19,78 @@ in {
     stateVersion = "25.05";
   };
 
-  home.packages = with pkgs; [
-    # editor
-    ((emacsPackagesFor zsxh-emacs).emacsWithPackages (epkgs:
-      with epkgs; [
-        vterm
-        pdf-tools
-        telega
-      ]))
+  home.packages = with pkgs;
+    [
+      # editor
+      ((emacsPackagesFor emacs30).emacsWithPackages (epkgs:
+        with epkgs; [
+          vterm
+          pdf-tools
+          telega
+        ]))
 
-    # program languages
-    clojure
-    go
-    nodejs
-    python3
-    typescript
+      # program languages
+      clojure
+      go
+      nodejs
+      python3
+      typescript
 
-    # lsp servers
-    emacs-lsp-booster
-    nixd
-    alejandra # nix formatter
-    lua-language-server
-    pyright
-    ruff # python linter
-    black # python formatter
-    typescript-language-server
-    vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers
-    jdt-language-server
-    clojure-lsp
-    gopls
+      # lsp servers
+      emacs-lsp-booster
+      nixd
+      alejandra # nix formatter
+      lua-language-server
+      pyright
+      ruff # python linter
+      black # python formatter
+      typescript-language-server
+      vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers
+      jdt-language-server
+      clojure-lsp
+      gopls
 
-    # devtools
-    jq
-    act
-    buildpack
-    kubernetes-helm
-    k3d
-    k9s
-    kubectl
-    lazydocker
-    maven
-    pnpm
-    pdm
-    mkcert
-    termshark
-    iredis
-    mise # manage jdks
-    aider-chat
-    ffmpegthumbnailer # Lightweight video thumbnailer
-    mediainfo # Supplies technical and tag information about a video or audio file
-    imagemagick # Software suite to create, edit, compose, or convert bitmap images
-    fd
-    bat # Cat(1) clone with syntax highlighting and Git integration
-    xclip # Tool to access the X clipboard from a console application
-    ripgrep
-    gh # GitHub CLI tool
-    htop
-    fastfetch
+      # devtools
+      jq
+      act
+      buildpack
+      kubernetes-helm
+      k3d
+      k9s
+      kubectl
+      lazydocker
+      maven
+      pnpm
+      pdm
+      mkcert
+      termshark
+      iredis
+      mise # manage jdks
+      aider-chat
+      ffmpegthumbnailer # Lightweight video thumbnailer
+      mediainfo # Supplies technical and tag information about a video or audio file
+      imagemagick # Software suite to create, edit, compose, or convert bitmap images
+      fd
+      bat # Cat(1) clone with syntax highlighting and Git integration
+      xclip # Tool to access the X clipboard from a console application
+      ripgrep
+      gh # GitHub CLI tool
+      htop
+      fastfetch
+      git-extras
 
-    # others
-    # firefox-devedition-unwrapped
-    google-chrome
-    telegram-desktop
-    mpv-unwrapped
-    wireshark
-  ];
+      # others
+      # firefox-devedition-unwrapped
+      google-chrome
+      telegram-desktop
+      mpv-unwrapped
+      wireshark
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      docker
+    ];
 
   home.file = {
   };

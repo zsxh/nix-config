@@ -22,12 +22,13 @@ in {
   home.packages = with pkgs;
     [
       # editor
-      ((emacsPackagesFor emacs30).emacsWithPackages (epkgs:
-        with epkgs; [
-          vterm
-          pdf-tools
-          telega
-        ]))
+      # TODO: upgrade packages exclude external packages managed by nix
+      # ((emacsPackagesFor zsxh-emacs).emacsWithPackages (epkgs:
+      #   with epkgs; [
+      #     vterm
+      #     pdf-tools
+      #     telega
+      #   ]))
 
       # program languages
       clojure
@@ -41,7 +42,7 @@ in {
       nixd
       alejandra # nix formatter
       lua-language-server
-      pyright
+      basedpyright
       ruff # python linter
       black # python formatter
       typescript-language-server
@@ -166,6 +167,13 @@ in {
       # add to ~/.zshenv
       envExtra = ''
         skip_global_compinit=1
+
+        # Java runtimes
+        export JAVA_8_HOME="${pkgs.jdk8}";
+        export JAVA_11_HOME="${pkgs.jdk11}";
+        export JAVA_17_HOME="${pkgs.jdk17}";
+        export JAVA_21_HOME="${pkgs.jdk21}";
+        export JAVA_23_HOME="${pkgs.jdk23}";
       '';
 
       # add to ~/.zprofile

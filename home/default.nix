@@ -29,6 +29,7 @@ in {
       #     pdf-tools
       #     telega
       #   ]))
+      emacsPackages.telega
 
       # program languages
       clojure
@@ -79,6 +80,7 @@ in {
       htop
       fastfetch
       git-extras
+      age # Modern encryption tool with small explicit keys
 
       # others
       # firefox-devedition-unwrapped
@@ -248,6 +250,15 @@ in {
         macos_option_as_alt = "both"; # Don't break any Alt+Key keyboard shortcuts
       };
     };
+
+    # ghostty = {
+    #   enable = true;
+    #   settings = {
+    #     theme = "DoomOne";
+    #     font-family = "Fira Code";
+    #     font-size = 16;
+    #   };
+    # };
 
     tmux = {
       enable = true;

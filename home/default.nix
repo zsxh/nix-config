@@ -23,12 +23,11 @@ in {
     [
       # editor
       # TODO: upgrade packages exclude external packages managed by nix
-      # ((emacsPackagesFor zsxh-emacs).emacsWithPackages (epkgs:
-      #   with epkgs; [
-      #     vterm
-      #     pdf-tools
-      #     telega
-      #   ]))
+      ((emacsPackagesFor zsxh-emacs).emacsWithPackages (epkgs:
+        with epkgs; [
+          vterm
+          pdf-tools
+        ]))
       emacsPackages.telega
 
       # program languages
@@ -43,7 +42,8 @@ in {
       nixd
       alejandra # nix formatter
       lua-language-server
-      basedpyright
+      # basedpyright
+      pyright
       ruff # python linter
       black # python formatter
       typescript-language-server
@@ -67,7 +67,6 @@ in {
       mkcert
       termshark
       iredis
-      mise # manage jdks
       aider-chat
       ffmpegthumbnailer # Lightweight video thumbnailer
       mediainfo # Supplies technical and tag information about a video or audio file
@@ -79,8 +78,11 @@ in {
       gh # GitHub CLI tool
       htop
       fastfetch
-      git-extras
+      git-extras # GIT utilities -- repo summary, repl, changelog population, author commit percentages and more
       age # Modern encryption tool with small explicit keys
+      yazi # terminal file manager written in Rust
+      lazygit # A simple terminal UI for git commands
+      lazysql #  A cross-platform TUI database management tool written in Go.
 
       # others
       # firefox-devedition-unwrapped
@@ -90,6 +92,7 @@ in {
       wireshark
     ]
     ++ lib.optionals stdenv.isDarwin [
+      utm # virtual machine
     ]
     ++ lib.optionals stdenv.isLinux [
       docker
@@ -296,7 +299,6 @@ in {
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
-      # mise.enable = true;
     };
 
     # set JAVA_HOME

@@ -83,6 +83,8 @@ in {
       yazi # terminal file manager written in Rust
       lazygit # A simple terminal UI for git commands
       lazysql #  A cross-platform TUI database management tool written in Go.
+      ffmpeg
+      eza # A modern replacement for ‘ls’.
 
       # others
       # firefox-devedition-unwrapped
@@ -152,6 +154,7 @@ in {
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
+      zprof.enable = false;
 
       plugins = [
         {
@@ -191,13 +194,15 @@ in {
         fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
       '';
       completionInit = ''
-        # - https://zsh.sourceforge.io/Doc/Release/Completion-System.html
-        # - https://www.danielmoch.com/posts/2018/11/zsh-compinit-rtfm/
-        # - https://gist.github.com/ctechols/ca1035271ad134841284
-        # - https://medium.com/@dannysmith/little-thing-2-speeding-up-zsh-f1860390f92
-        # NOTE: compinit/compdump is slow if I don't give zcompdump file a name other than ".zcompdump", Why?
+        # 加快zsh启动速度
         autoload -Uz compinit
-        compinit -d ~/.zcompdump_2
+        if [[ -n $(print ~/.zcompdump(N.mh+24)) ]]; then
+          # echo "缓存文件已过期"
+          compinit
+        else
+          # echo "缓存文件未过期"
+          compinit -C
+        fi
       '';
       initExtra = ''
         [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :

@@ -28,7 +28,6 @@ self: super: {
 
     # 保持Linux平台的原始补丁
     postPatch = super.lib.optionalString super.stdenv.isLinux ''
-      # 仅 Linux 需要禁用 -Werror
       substituteInPlace code/gc.gmk --replace-fail '-Werror ' ' '
       substituteInPlace code/gp.gmk --replace-fail '-Werror ' ' '
       substituteInPlace code/ll.gmk --replace-fail '-Werror ' ' '

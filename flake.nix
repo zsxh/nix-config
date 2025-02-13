@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/ad16925507732f4f57f6cc5595bdfa90d2692278";
+      url = "github:nix-community/emacs-overlay/8a91f48b10b4ef312f483af4fc2ca768f05118b6";
     };
   };
 
@@ -53,7 +53,10 @@
         # home manager
         home-manager.darwinModules.home-manager
         {
-          nixpkgs.overlays = [emacs-overlay.overlay];
+          nixpkgs.overlays = [
+            (import ./overlays/mps-overlay.nix)
+            emacs-overlay.overlay
+          ];
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = specialArgs;

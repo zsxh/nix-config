@@ -5,8 +5,7 @@
   username,
   ...
 }: let
-  # NOTE: emacs-mps, https://github.com/nix-community/emacs-overlay/issues/417#issuecomment-2271251234
-  zsxh-emacs = pkgs.emacs-git.override {
+  zsxh-emacs = pkgs.emacs-igc.override {
     withNativeCompilation = false;
   };
 in {
@@ -48,6 +47,7 @@ in {
       black # python formatter
       typescript-language-server
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers
+      yaml-language-server
       jdt-language-server
       clojure-lsp
       gopls
@@ -94,7 +94,7 @@ in {
       wireshark
     ]
     ++ lib.optionals stdenv.isDarwin [
-      utm # virtual machine
+      # utm # virtual machine
     ]
     ++ lib.optionals stdenv.isLinux [
       docker

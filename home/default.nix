@@ -28,6 +28,7 @@ in {
           pdf-tools
         ]))
       emacsPackages.telega
+      emacs-lsp-booster
 
       # program languages
       clojure
@@ -37,7 +38,6 @@ in {
       typescript
 
       # lsp servers
-      emacs-lsp-booster
       nixd
       alejandra # nix formatter
       lua-language-server

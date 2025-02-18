@@ -12,8 +12,8 @@
 
     # 指定二进制缓存服务器的 URL。Nix 会从这些服务器下载预构建的包，而不是从源码构建
     substituters = [
-      "https://mirrors.sustech.edu.cn/nix-channels/store"
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirrors.sustech.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"

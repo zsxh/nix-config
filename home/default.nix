@@ -91,12 +91,13 @@ in {
       google-chrome
       telegram-desktop
       mpv-unwrapped
-      wireshark
+      jetbrains.idea-community
     ]
     ++ lib.optionals stdenv.isDarwin [
       # utm # virtual machine
     ]
     ++ lib.optionals stdenv.isLinux [
+      wireshark
       docker
     ];
 

@@ -4,8 +4,8 @@
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
     substituters = [
-      "https://mirrors.sustech.edu.cn/nix-channels/store"
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirrors.sustech.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/8a91f48b10b4ef312f483af4fc2ca768f05118b6";
+      url = "github:nix-community/emacs-overlay/53b218d3d3d187724e86b2a63ce9a960d005faac";
     };
   };
 

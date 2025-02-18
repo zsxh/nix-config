@@ -111,8 +111,9 @@ in {
       "lm-studio"
       "raycast"
       "orbstack"
-      # "wireshark"
+      "wireshark"
       "visual-studio-code"
+      "cherry-studio"
 
       # others
       "karabiner-elements"

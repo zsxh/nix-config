@@ -24,8 +24,10 @@
     material-design-icons
     font-awesome
     fira-code
+
     nerd-fonts.symbols-only
     nerd-fonts.fira-code
+    nerd-fonts.fira-mono
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
 

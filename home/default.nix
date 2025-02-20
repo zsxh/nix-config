@@ -85,6 +85,7 @@ in {
       lazysql #  A cross-platform TUI database management tool written in Go.
       ffmpeg
       eza # A modern replacement for ‘ls’.
+      # nix-index # Programs provided: nix-channel-index, nix-index, nix-locate
 
       # others
       # firefox-devedition-unwrapped
@@ -94,7 +95,9 @@ in {
       jetbrains.idea-community
     ]
     ++ lib.optionals stdenv.isDarwin [
-      # utm # virtual machine
+      # NOTE: Add "nix" to the "allow full disk access" security list if the build fails
+      # with 'Operation not permitted' for some packages
+      utm # virtual machine
     ]
     ++ lib.optionals stdenv.isLinux [
       wireshark

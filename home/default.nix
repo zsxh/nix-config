@@ -26,6 +26,9 @@ in {
         with epkgs; [
           vterm
           pdf-tools
+          # link tree-sitter grammar libs to user-emacs-directory
+          # check: https://discourse.nixos.org/t/packages-required-to-get-emacs-typescript-ts-mode-to-work/31225/13
+          treesit-grammars.with-all-grammars
         ]))
       emacsPackages.telega
       emacs-lsp-booster
@@ -69,8 +72,10 @@ in {
       iredis
       aider-chat
       ffmpegthumbnailer # Lightweight video thumbnailer
+      epub-thumbnailer
       mediainfo # Supplies technical and tag information about a video or audio file
       imagemagick # Software suite to create, edit, compose, or convert bitmap images
+      poppler_utils # PDF rendering library
       fd
       bat # Cat(1) clone with syntax highlighting and Git integration
       xclip # Tool to access the X clipboard from a console application
@@ -87,12 +92,13 @@ in {
       eza # A modern replacement for ‘ls’.
       # nix-index # Programs provided: nix-channel-index, nix-index, nix-locate
 
-      # others
+      # gui apps
       # firefox-devedition-unwrapped
       google-chrome
       telegram-desktop
       mpv-unwrapped
       jetbrains.idea-community
+      # kanata # TODO: cross-platform software keyboard remapper for Linux, macOS and Windows
     ]
     ++ lib.optionals stdenv.isDarwin [
       # NOTE: Add "nix" to the "allow full disk access" security list if the build fails
@@ -105,6 +111,8 @@ in {
     ];
 
   home.file = {
+    # tree-sitter subdirectory of the directory specified by user-emacs-directory
+    # ".emacs.d/tree-sitter".source = "${(pkgs.emacsPackagesFor zsxh-emacs).treesit-grammars.with-all-grammars}/lib";
   };
 
   # Let Home Manager install and manage itself.

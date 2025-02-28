@@ -215,6 +215,8 @@ in {
           # echo "缓存文件未过期"
           compinit -C
         fi
+        # 设置路径补全无视大小写
+        zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
       '';
       initExtra = ''
         [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :

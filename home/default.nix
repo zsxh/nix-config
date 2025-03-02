@@ -73,6 +73,7 @@ in {
       aider-chat
       ffmpegthumbnailer # Lightweight video thumbnailer
       epub-thumbnailer
+      vips
       mediainfo # Supplies technical and tag information about a video or audio file
       imagemagick # Software suite to create, edit, compose, or convert bitmap images
       poppler_utils # PDF rendering library

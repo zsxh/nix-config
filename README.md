@@ -4,7 +4,7 @@
 
 Add configs to `/etc/nix/nix.conf` then restart nix services.
 
-```
+``` conf
 # add configs
 experimental-features = nix-command flakes
 trusted-users = root <yourname>

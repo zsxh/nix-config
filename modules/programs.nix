@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   # Homebrew Mirror
   # NOTE: is only useful when you run `brew install` manually! (not via nix-darwin)
   homebrew_mirror_env = {
@@ -14,12 +15,12 @@
     HOMEBREW_CORE_GIT_REMOTE = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git";
     HOMEBREW_PIP_INDEX_URL = "https://pypi.tuna.tsinghua.edu.cn/simple";
   };
-  homebrew_env_script =
-    lib.attrsets.foldlAttrs
-    (acc: name: value: acc + "\nexport ${name}=${value}")
-    ""
-    homebrew_mirror_env;
-in {
+  homebrew_env_script = lib.attrsets.foldlAttrs (
+    acc: name: value:
+    acc + "\nexport ${name}=${value}"
+  ) "" homebrew_mirror_env;
+in
+{
   # Install packages from nix's official package repository.
   #
   # The packages installed here are available to all users, and are reproducible across machines, and are rollbackable.

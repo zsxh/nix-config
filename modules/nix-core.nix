@@ -3,12 +3,16 @@
   lib,
   username,
   ...
-}: {
+}:
+{
   nix.settings = {
     # enable flakes globally
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
-    trusted-users = [username];
+    trusted-users = [ username ];
 
     # 指定二进制缓存服务器的 URL。Nix 会从这些服务器下载预构建的包，而不是从源码构建
     substituters = [

@@ -4,11 +4,13 @@
   lib,
   username,
   ...
-}: let
+}:
+let
   zsxh-emacs = pkgs.emacs-igc.override {
     withNativeCompilation = false;
   };
-in {
+in
+{
   imports = [
   ];
 
@@ -18,18 +20,20 @@ in {
     stateVersion = "25.05";
   };
 
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     [
       # editor
       # TODO: upgrade packages exclude external packages managed by nix
-      ((emacsPackagesFor zsxh-emacs).emacsWithPackages (epkgs:
-        with epkgs; [
+      ((emacsPackagesFor zsxh-emacs).emacsWithPackages (
+        epkgs: with epkgs; [
           vterm
           pdf-tools
           # link tree-sitter grammar libs to user-emacs-directory
           # check: https://discourse.nixos.org/t/packages-required-to-get-emacs-typescript-ts-mode-to-work/31225/13
           treesit-grammars.with-all-grammars
-        ]))
+        ]
+      ))
       emacsPackages.telega
       emacs-lsp-booster
 
@@ -42,7 +46,7 @@ in {
 
       # lsp servers
       nixd
-      alejandra # nix formatter
+      nixfmt-rfc-style # nix formatter
       lua-language-server
       # basedpyright
       pyright
@@ -88,7 +92,7 @@ in {
       age # Modern encryption tool with small explicit keys
       yazi # terminal file manager written in Rust
       lazygit # A simple terminal UI for git commands
-      lazysql #  A cross-platform TUI database management tool written in Go.
+      lazysql # A cross-platform TUI database management tool written in Go.
       ffmpeg
       eza # A modern replacement for ‘ls’.
       # nix-index # Programs provided: nix-channel-index, nix-index, nix-locate
@@ -123,7 +127,7 @@ in {
   # to make git use this config file, `~/.gitconfig` should not exist!
   #
   #    https://git-scm.com/docs/git-config#Documentation/git-config.txt---global
-  home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
+  home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
     rm -f ${config.home.homeDirectory}/.gitconfig
   '';
 
@@ -198,8 +202,7 @@ in {
       '';
 
       # add to ~/.zprofile
-      profileExtra = ''
-      '';
+      profileExtra = '''';
 
       # add to ~/.zshrc
       initExtraBeforeCompInit = ''

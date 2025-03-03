@@ -30,39 +30,44 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    nix-darwin,
-    home-manager,
-    emacs-overlay,
-    ...
-  }: let
-    username = "zsxh";
-    specialArgs = inputs // {inherit username;};
-  in {
-    # Build/Switch darwin flake using:
-    # $ darwin-rebuild build --flake .#macbook
-    # $ nix flake update
-    # $ darwin-rebuild switch --flake .#macbook
-    darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
-      inherit specialArgs;
-      modules = [
-        ./modules
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      emacs-overlay,
+      ...
+    }:
+    let
+      username = "zsxh";
+      specialArgs = inputs // {
+        inherit username;
+      };
+    in
+    {
+      # Build/Switch darwin flake using:
+      # $ darwin-rebuild build --flake .#macbook
+      # $ nix flake update
+      # $ darwin-rebuild switch --flake .#macbook
+      darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
+        inherit specialArgs;
+        modules = [
+          ./modules
 
-        # home manager
-        home-manager.darwinModules.home-manager
-        {
-          nixpkgs.overlays = [
-            (import ./overlays/mps-overlay.nix)
-            emacs-overlay.overlay
-          ];
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users.${username}.imports = [./home];
-        }
-      ];
+          # home manager
+          home-manager.darwinModules.home-manager
+          {
+            nixpkgs.overlays = [
+              (import ./overlays/mps-overlay.nix)
+              emacs-overlay.overlay
+            ];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users.${username}.imports = [ ./home ];
+          }
+        ];
+      };
     };
-  };
 }

@@ -3,6 +3,7 @@
   pkgs,
   lib,
   username,
+  mysecrets,
   ...
 }:
 let
@@ -81,6 +82,7 @@ in
       mediainfo # Supplies technical and tag information about a video or audio file
       imagemagick # Software suite to create, edit, compose, or convert bitmap images
       poppler_utils # PDF rendering library
+      _7zz # Programs provided: 7zz, Command line archiver utility
       fd
       bat # Cat(1) clone with syntax highlighting and Git integration
       xclip # Tool to access the X clipboard from a console application
@@ -96,6 +98,7 @@ in
       ffmpeg
       eza # A modern replacement for ‘ls’.
       # nix-index # Programs provided: nix-channel-index, nix-index, nix-locate
+      python313Packages.huggingface-hub # Programs provided: huggingface-cli
 
       # gui apps
       # firefox-devedition-unwrapped
@@ -116,6 +119,7 @@ in
     ];
 
   home.file = {
+    ".authinfo.age".source = "${mysecrets}/.authinfo.age";
     # tree-sitter subdirectory of the directory specified by user-emacs-directory
     # ".emacs.d/tree-sitter".source = "${(pkgs.emacsPackagesFor zsxh-emacs).treesit-grammars.with-all-grammars}/lib";
   };
@@ -130,6 +134,18 @@ in
   home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
     rm -f ${config.home.homeDirectory}/.gitconfig
   '';
+
+  home.sessionVariables = {
+    # mirrors
+    HF_ENDPOINT = "https://hf-mirror.com"; # huggingface 国内镜像
+
+    # Java runtimes
+    JAVA_8_HOME = "${pkgs.jdk8}";
+    JAVA_11_HOME = "${pkgs.jdk11}";
+    JAVA_17_HOME = "${pkgs.jdk17}";
+    JAVA_21_HOME = "${pkgs.jdk21}";
+    JAVA_23_HOME = "${pkgs.jdk23}";
+  };
 
   programs = {
     git = {
@@ -180,6 +196,8 @@ in
         }
       ];
 
+      sessionVariables = { };
+
       shellAliases = {
         ls = "ls --color=auto --group-directories-first";
         ll = "ls -l";
@@ -192,13 +210,6 @@ in
       # add to ~/.zshenv
       envExtra = ''
         skip_global_compinit=1
-
-        # Java runtimes
-        export JAVA_8_HOME="${pkgs.jdk8}";
-        export JAVA_11_HOME="${pkgs.jdk11}";
-        export JAVA_17_HOME="${pkgs.jdk17}";
-        export JAVA_21_HOME="${pkgs.jdk21}";
-        export JAVA_23_HOME="${pkgs.jdk23}";
       '';
 
       # add to ~/.zprofile

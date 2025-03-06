@@ -28,12 +28,20 @@
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay/ca6781247e2693f5aa7de347398d5ec8dba78fe2";
     };
+    # secrets management
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # my private secrets, it's a private repository
+    mysecrets = {
+      url = "git+ssh://git@github.com/zsxh/nix-secrets.git?shallow=1";
+      flake = false;
+    };
   };
 
   outputs =
     inputs@{
-      self,
-      nixpkgs,
       nix-darwin,
       home-manager,
       emacs-overlay,
@@ -53,6 +61,7 @@
       darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
         inherit specialArgs;
         modules = [
+          ./secrets/darwin.nix
           ./modules
 
           # home manager

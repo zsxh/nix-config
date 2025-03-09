@@ -69,7 +69,7 @@ in
       autoUpdate = false; # Fetch the newest stable branch of Homebrew's git repo
       upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
       # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
-      # cleanup = "zap";
+      cleanup = "zap";
     };
 
     # Applications to install from Mac App Store using mas.
@@ -90,7 +90,7 @@ in
 
     taps = [
       # "homebrew/services"
-      "d12frosted/emacs-plus"
+      # "d12frosted/emacs-plus"
     ];
 
     # `brew install`
@@ -101,9 +101,9 @@ in
       #   args = [];
       #   link = true;
       # }
-      "poppler"
-      "libvterm"
-      "tree-sitter"
+      # "poppler"
+      # "libvterm"
+      # "tree-sitter"
     ];
 
     # `brew install --cask`

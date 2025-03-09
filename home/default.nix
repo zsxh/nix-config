@@ -99,6 +99,7 @@ in
       eza # A modern replacement for ‘ls’.
       # nix-index # Programs provided: nix-channel-index, nix-index, nix-locate
       python313Packages.huggingface-hub # Programs provided: huggingface-cli
+      hurl # Command line tool that performs HTTP requests defined in a simple plain text format
 
       # gui apps
       # firefox-devedition-unwrapped

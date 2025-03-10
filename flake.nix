@@ -28,6 +28,7 @@
     };
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay/db37ae9cd947031ad83288dec514233ffd262ffd";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # secrets management
     agenix = {

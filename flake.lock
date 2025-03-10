@@ -47,7 +47,9 @@
     },
     "emacs-overlay": {
       "inputs": {
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
@@ -93,11 +95,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741579508,
-        "narHash": "sha256-skRbH+UF2ES+msEa+KWi7AQFX73S+QsGlPsyCU6XyE0=",
+        "lastModified": 1741613526,
+        "narHash": "sha256-HUEfRLqCy47BQ7kOG4SRVhqE7J6lkFzAagnd13I17qk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "744f749dd6fbc1489591ea370b95156858629cb9",
+        "rev": "3593ee59a44974b8518829a5239b2f77222e3c81",
         "type": "github"
       },
       "original": {
@@ -161,11 +163,11 @@
     },
     "nixpkgs-darwin": {
       "locked": {
-        "lastModified": 1741402956,
-        "narHash": "sha256-y2hByvBM03s9T2fpeLjW6iprbxnhV9mJMmSwCHc41ZQ=",
+        "lastModified": 1741462378,
+        "narHash": "sha256-ZF3YOjq+vTcH51S+qWa1oGA9FgmdJ67nTNPG2OIlXDc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ed0b1881565c1ffef490c10d663d4f542031dad3",
+        "rev": "2d9e4457f8e83120c9fdf6f1707ed0bc603e5ac9",
         "type": "github"
       },
       "original": {
@@ -191,22 +193,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1741379970,
-        "narHash": "sha256-Wh7esNh7G24qYleLvgOSY/7HlDUzWaL/n4qzlBePpiw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "36fd87baa9083f34f7f5027900b62ee6d09b1f2f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -214,7 +200,7 @@
         "home-manager": "home-manager_2",
         "mysecrets": "mysecrets",
         "nix-darwin": "nix-darwin",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nixpkgs-darwin": "nixpkgs-darwin"
       }
     },

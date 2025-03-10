@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   agenix,
   mysecrets,
@@ -21,4 +22,5 @@
   ];
 
   age.secrets = { };
+
 }

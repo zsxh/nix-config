@@ -93,11 +93,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741502651,
-        "narHash": "sha256-7u8FF20WRvQsmfTuNuCerRzstuZ0XgkwWPkq+GoRfiA=",
+        "lastModified": 1741579508,
+        "narHash": "sha256-skRbH+UF2ES+msEa+KWi7AQFX73S+QsGlPsyCU6XyE0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1fd39a105575ea997b32a043a0dd2c49294add5b",
+        "rev": "744f749dd6fbc1489591ea370b95156858629cb9",
         "type": "github"
       },
       "original": {
@@ -109,10 +109,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1741279610,
-        "narHash": "sha256-EGnaS950vaK+lkbNCId84/W7si549iynXkhf4++rOMo=",
+        "lastModified": 1741583316,
+        "narHash": "sha256-MkiQIysDMkInsJ1u9PXuD/la+VZWt1dwrJjzOzNiufM=",
         "ref": "refs/heads/main",
-        "rev": "093e25968237e410acbe5f9da700835f0addf52c",
+        "rev": "040443121abebc957d1e1eecaa29fda66477cf24",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/zsxh/nix-secrets.git"
@@ -161,11 +161,11 @@
     },
     "nixpkgs-darwin": {
       "locked": {
-        "lastModified": 1741310760,
-        "narHash": "sha256-aizILFrPgq/W53Jw8i0a1h1GZAAKtlYOrG/A5r46gVM=",
+        "lastModified": 1741402956,
+        "narHash": "sha256-y2hByvBM03s9T2fpeLjW6iprbxnhV9mJMmSwCHc41ZQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "de0fe301211c267807afd11b12613f5511ff7433",
+        "rev": "ed0b1881565c1ffef490c10d663d4f542031dad3",
         "type": "github"
       },
       "original": {

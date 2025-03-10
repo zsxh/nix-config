@@ -115,6 +115,8 @@ in
       "wireshark"
       "visual-studio-code"
       "cherry-studio"
+      "trae"
+      "cursor"
 
       # others
       "karabiner-elements"

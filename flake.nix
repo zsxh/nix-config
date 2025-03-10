@@ -76,7 +76,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users.${username}.imports = [ ./home ];
+            home-manager.users.${username}.imports = [
+              ./secrets/home.nix
+              ./home
+            ];
           }
         ];
       };

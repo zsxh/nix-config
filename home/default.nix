@@ -100,6 +100,7 @@ in
       # nix-index # Programs provided: nix-channel-index, nix-index, nix-locate
       python313Packages.huggingface-hub # Programs provided: huggingface-cli
       hurl # Command line tool that performs HTTP requests defined in a simple plain text format
+      whisper-cpp # High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model
 
       # gui apps
       # firefox-devedition-unwrapped

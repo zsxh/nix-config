@@ -1,4 +1,4 @@
 # TODOs
 
-- dae, 代理
-- project direnv, devenv
+- [X] project direnv, devenv
+- [ ] dae, 代理

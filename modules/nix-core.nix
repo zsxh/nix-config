@@ -44,8 +44,19 @@
   nix.package = pkgs.nix;
 
   # do garbage collection weekly to keep disk usage low
+  # https://nixos.wiki/wiki/Storage_optimization
   nix.gc = {
     automatic = lib.mkDefault true;
     options = lib.mkDefault "--delete-older-than 7d";
+
+    # NixOS专用配置
+    dates = lib.mkIf (pkgs.stdenv.isLinux) "weekly";
+
+    # nix-darwin专用配置
+    interval = lib.mkIf (pkgs.stdenv.isDarwin) {
+      Weekday = 0;
+      Hour = 0;
+      Minute = 0;
+    };
   };
 }

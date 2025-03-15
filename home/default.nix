@@ -248,7 +248,6 @@ in
     # Cross-Shell Prompt
     starship = {
       enable = true;
-      enableZshIntegration = true;
       settings = {
         add_newline = false;
         directory = {
@@ -260,7 +259,6 @@ in
 
     fzf = {
       enable = true;
-      enableZshIntegration = true;
       defaultCommand = "fd --type f"; # 使用 fd 作为默认搜索工具
       defaultOptions = [
         "--height 40%"
@@ -278,7 +276,6 @@ in
     # Fast cd command that learns your habits
     zoxide = {
       enable = true;
-      enableZshIntegration = true;
     };
 
     # terminal
@@ -338,7 +335,6 @@ in
 
     direnv = {
       enable = true;
-      enableZshIntegration = true;
       nix-direnv.enable = true;
     };
 

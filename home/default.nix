@@ -223,6 +223,7 @@ in
       initExtraBeforeCompInit = ''
         # homebrew zsh completions
         fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+        [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
       '';
       completionInit = ''
         # 加快zsh启动速度
@@ -238,7 +239,6 @@ in
         zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
       '';
       initExtra = ''
-        [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
       '';
     };
 
@@ -361,4 +361,15 @@ in
   home.file.".npmrc".text = ''
     registry=https://registry.npmmirror.com
   '';
+  # 国内的 Docker Hub 镜像加速器
+  # https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6
+  # https://github.com/DaoCloud/public-image-mirror
+  home.file.".orbstack/config/docker.json".text = ''
+    {
+      "registry-mirrors": [
+        "https://docker.m.daocloud.io"
+      ]
+    }
+  '';
+
 }

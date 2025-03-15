@@ -104,6 +104,7 @@ in
       unrar
       hugo # Fast and modern static website engine
       # zsh-history-to-fish
+      grpcurl
 
       # gui apps
       # firefox-devedition-unwrapped

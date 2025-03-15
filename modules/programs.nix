@@ -96,6 +96,7 @@ in
     # `brew install`
     brews = [
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
+      "gh"
       # {
       #   name = "emacs-plus@31";
       #   args = [];

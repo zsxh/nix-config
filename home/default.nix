@@ -258,6 +258,9 @@ in
         # homebrew zsh completions
         fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
         [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+        if command -v orbctl >/dev/null 2>&1; then
+          eval "$(orbctl completion zsh)"
+        fi
       '';
       completionInit = ''
         # 加快zsh启动速度
@@ -290,8 +293,7 @@ in
     # NOTE: bug: Shell integration is installed even with programs.fzf.enableFishIntegration = false
     # https://github.com/nix-community/home-manager/issues/5904
     fzf = {
-      enable = false;
-      enableFishIntegration = false;
+      enable = true;
       defaultCommand = "fd --type f"; # 使用 fd 作为默认搜索工具
       defaultOptions = [
         "--height 40%"
@@ -368,7 +370,6 @@ in
 
     direnv = {
       enable = true;
-      enableZshIntegration = true;
       nix-direnv.enable = true;
     };
 

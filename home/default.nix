@@ -224,6 +224,9 @@ in
         # homebrew zsh completions
         fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
         [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+        if command -v orbctl >/dev/null 2>&1; then
+          eval "$(orbctl completion zsh)"
+        fi
       '';
       completionInit = ''
         # 加快zsh启动速度

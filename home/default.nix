@@ -103,6 +103,7 @@ in
       whisper-cpp # High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model
       unrar
       hugo # Fast and modern static website engine
+      grpcurl
 
       # gui apps
       # firefox-devedition-unwrapped

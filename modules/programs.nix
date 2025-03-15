@@ -56,6 +56,7 @@ in
   # /etc/shells
   environment.shells = [
     pkgs.zsh
+    pkgs.fish
   ];
 
   # NOTE: To make this work, homebrew need to be installed manually, see https://brew.sh
@@ -96,6 +97,8 @@ in
     # `brew install`
     brews = [
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
+      "gh"
+      # "docker-completion"
       # {
       #   name = "emacs-plus@31";
       #   args = [];

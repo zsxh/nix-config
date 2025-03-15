@@ -103,6 +103,7 @@ in
       whisper-cpp # High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model
       unrar
       hugo # Fast and modern static website engine
+      # zsh-history-to-fish
 
       # gui apps
       # firefox-devedition-unwrapped
@@ -186,6 +187,39 @@ in
       };
     };
 
+    fish = {
+      enable = true;
+      interactiveShellInit = ''
+        if test -d (brew --prefix)"/share/fish/completions"
+            set -p fish_complete_path (brew --prefix)/share/fish/completions
+        end
+
+        if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+            set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+        end
+
+        if type -q orbctl
+            orbctl completion fish | source
+        end
+
+        # 按键绑定
+        bind ctrl-j down-or-search
+        bind ctrl-k up-or-search
+      '';
+      loginShellInit = '''';
+      shellInit = ''
+        fish_add_path -ga ~/.orbstack/bin
+      '';
+      shellAliases = {
+        ls = "ls --color=auto --group-directories-first";
+        ll = "ls -l";
+        la = "ls -a";
+        mg = "mvn archetype:generate";
+        shttp = "export http_proxy=http://127.0.0.1:1080/; export https_proxy=http://127.0.0.1:1080/;";
+        uhttp = "unset http_proxy; unset https_proxy;";
+      };
+    };
+
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -238,14 +272,12 @@ in
         # 设置路径补全无视大小写
         zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
       '';
-      initExtra = ''
-      '';
+      initExtra = '''';
     };
 
     # Cross-Shell Prompt
     starship = {
       enable = true;
-      enableZshIntegration = true;
       settings = {
         add_newline = false;
         directory = {
@@ -255,9 +287,11 @@ in
       };
     };
 
+    # NOTE: bug: Shell integration is installed even with programs.fzf.enableFishIntegration = false
+    # https://github.com/nix-community/home-manager/issues/5904
     fzf = {
-      enable = true;
-      enableZshIntegration = true;
+      enable = false;
+      enableFishIntegration = false;
       defaultCommand = "fd --type f"; # 使用 fd 作为默认搜索工具
       defaultOptions = [
         "--height 40%"
@@ -275,7 +309,6 @@ in
     # Fast cd command that learns your habits
     zoxide = {
       enable = true;
-      enableZshIntegration = true;
     };
 
     # terminal

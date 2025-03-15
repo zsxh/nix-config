@@ -201,13 +201,10 @@ in
         if type -q orbctl
             orbctl completion fish | source
         end
-
-        # 按键绑定
-        bind ctrl-j down-or-search
-        bind ctrl-k up-or-search
       '';
       loginShellInit = '''';
       shellInit = ''
+        set -g fish_greeting
         fish_add_path -ga ~/.orbstack/bin
       '';
       shellAliases = {
@@ -293,7 +290,7 @@ in
     # NOTE: bug: Shell integration is installed even with programs.fzf.enableFishIntegration = false
     # https://github.com/nix-community/home-manager/issues/5904
     fzf = {
-      enable = true;
+      enable = false;
       defaultCommand = "fd --type f"; # 使用 fd 作为默认搜索工具
       defaultOptions = [
         "--height 40%"

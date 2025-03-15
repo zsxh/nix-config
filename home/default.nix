@@ -217,64 +217,6 @@ in
       };
     };
 
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      zprof.enable = false;
-
-      plugins = [
-        {
-          name = "fzf-tab";
-          src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-        }
-      ];
-
-      sessionVariables = { };
-
-      shellAliases = {
-        ls = "ls --color=auto --group-directories-first";
-        ll = "ls -l";
-        la = "ls -a";
-        mg = "mvn archetype:generate";
-        shttp = "export http_proxy=http://127.0.0.1:1080/; export https_proxy=http://127.0.0.1:1080/;";
-        uhttp = "unset http_proxy; unset https_proxy;";
-      };
-
-      # add to ~/.zshenv
-      envExtra = ''
-        skip_global_compinit=1
-      '';
-
-      # add to ~/.zprofile
-      profileExtra = '''';
-
-      # add to ~/.zshrc
-      initExtraBeforeCompInit = ''
-        # homebrew zsh completions
-        fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-        [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-        if command -v orbctl >/dev/null 2>&1; then
-          eval "$(orbctl completion zsh)"
-        fi
-      '';
-      completionInit = ''
-        # 加快zsh启动速度
-        autoload -Uz compinit
-        if [[ -n $(print ~/.zcompdump(N.mh+24)) ]]; then
-          # echo "缓存文件已过期"
-          compinit
-        else
-          # echo "缓存文件未过期"
-          compinit -C
-        fi
-        # 设置路径补全无视大小写
-        zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-      '';
-      initExtra = '''';
-    };
-
     # Cross-Shell Prompt
     starship = {
       enable = true;
@@ -285,24 +227,6 @@ in
           fish_style_pwd_dir_length = 2;
         };
       };
-    };
-
-    # NOTE: bug: Shell integration is installed even with programs.fzf.enableFishIntegration = false
-    # https://github.com/nix-community/home-manager/issues/5904
-    fzf = {
-      enable = false;
-      defaultCommand = "fd --type f"; # 使用 fd 作为默认搜索工具
-      defaultOptions = [
-        "--height 40%"
-        "--reverse"
-        "--border"
-      ];
-      changeDirWidgetOptions = [
-        "--preview 'tree -C {} | head -200'"
-      ];
-      fileWidgetOptions = [
-        "--preview 'bat --color=always {}' --preview-window '~3'"
-      ];
     };
 
     # Fast cd command that learns your habits

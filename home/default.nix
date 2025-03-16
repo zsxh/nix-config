@@ -154,7 +154,7 @@ in
 
     # Go
     GOPROXY = "https://goproxy.cn,direct";
-    GOPATH = "${config.home.homeDirectory}/local/share/go";
+    GOPATH = "${config.home.homeDirectory}/.local/share/go";
   };
 
   programs = {

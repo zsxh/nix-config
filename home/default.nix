@@ -151,6 +151,10 @@ in
     JAVA_17_HOME = "${pkgs.jdk17}";
     JAVA_21_HOME = "${pkgs.jdk21}";
     JAVA_23_HOME = "${pkgs.jdk23}";
+
+    # Go
+    GOPROXY = "https://goproxy.cn,direct";
+    GOPATH = "${config.home.homeDirectory}/local/share/go";
   };
 
   programs = {

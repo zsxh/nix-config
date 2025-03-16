@@ -59,6 +59,8 @@ in
       jdt-language-server
       clojure-lsp
       gopls
+      go-tools # Collection of tools and libraries for working with Go code, including linters and static analysis
+      gofumpt # Stricter gofmt
 
       # devtools
       jq

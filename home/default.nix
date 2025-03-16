@@ -110,7 +110,8 @@ in
 
       # gui apps
       # firefox-devedition-unwrapped
-      google-chrome
+      # google-chrome
+      brave
       telegram-desktop
       mpv-unwrapped
       jetbrains.idea-community

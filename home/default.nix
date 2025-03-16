@@ -107,6 +107,7 @@ in
       hugo # Fast and modern static website engine
       # zsh-history-to-fish
       grpcurl
+      harlequin # The SQL IDE for Your Terminal.
 
       # gui apps
       # firefox-devedition-unwrapped

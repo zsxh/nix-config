@@ -106,7 +106,7 @@ in
       unrar
       hugo # Fast and modern static website engine
       grpcurl
-      harlequin # The SQL IDE for Your Terminal.
+      # harlequin # The SQL IDE for Your Terminal.
 
       # gui apps
       # firefox-devedition-unwrapped

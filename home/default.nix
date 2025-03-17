@@ -126,6 +126,10 @@ in
     ++ lib.optionals stdenv.isLinux [
       wireshark
       docker
+    ]
+    ++ [
+      # self-hosted
+      searxng # A privacy-respecting, hackable metasearch engine
     ];
 
   home.file = {
@@ -335,5 +339,4 @@ in
       ]
     }
   '';
-
 }

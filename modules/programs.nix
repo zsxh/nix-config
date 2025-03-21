@@ -120,6 +120,7 @@ in
       "cherry-studio"
       "trae"
       "cursor"
+      "redis-insight"
 
       # others
       "karabiner-elements"

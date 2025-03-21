@@ -118,6 +118,7 @@ in
       mpv-unwrapped
       jetbrains.idea-community
       # kanata # TODO: cross-platform software keyboard remapper for Linux, macOS and Windows
+      dbeaver-bin
     ]
     ++ lib.optionals stdenv.isDarwin [
       # NOTE: Add "nix" to the "allow full disk access" security list if the build fails
@@ -127,6 +128,7 @@ in
     ++ lib.optionals stdenv.isLinux [
       wireshark
       docker
+      redisinsight
     ]
     ++ [
       # self-hosted
@@ -223,7 +225,7 @@ in
       '';
       shellAliases = {
         ls = "ls --color=auto --group-directories-first";
-        ll = "ls -l";
+        ll = "ls -lh";
         la = "ls -a";
         mg = "mvn archetype:generate";
         shttp = "export http_proxy=http://127.0.0.1:1080/; export https_proxy=http://127.0.0.1:1080/;";

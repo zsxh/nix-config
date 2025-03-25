@@ -30,8 +30,6 @@ in
         epkgs: with epkgs; [
           vterm
           pdf-tools
-          # link tree-sitter grammar libs to user-emacs-directory
-          # check: https://discourse.nixos.org/t/packages-required-to-get-emacs-typescript-ts-mode-to-work/31225/13
           treesit-grammars.with-all-grammars
         ]
       ))
@@ -132,7 +130,7 @@ in
     ]
     ++ [
       # self-hosted
-      searxng # A privacy-respecting, hackable metasearch engine
+      # searxng # A privacy-respecting, hackable metasearch engine
     ];
 
   home.file = {

@@ -127,6 +127,7 @@ in
       "scroll-reverser"
       "firefox@developer-edition"
       "clash-verge-rev"
+      # "alt-tab"
     ];
   };
 }

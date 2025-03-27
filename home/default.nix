@@ -39,9 +39,10 @@ in
       # program languages
       clojure
       go
-      nodejs
+      # nodejs
+      # typescript
+      bun
       python3
-      typescript
 
       # lsp servers
       nixd
@@ -71,7 +72,7 @@ in
       kubectl
       lazydocker
       maven
-      pnpm
+      # pnpm
       pdm
       mkcert
       termshark
@@ -90,6 +91,7 @@ in
       ripgrep
       gh # GitHub CLI tool
       htop
+      btop
       fastfetch
       git-extras # GIT utilities -- repo summary, repl, changelog population, author commit percentages and more
       age # Modern encryption tool with small explicit keys
@@ -300,6 +302,13 @@ in
         bind l select-pane -R
         bind k select-pane -U
         bind j select-pane -D
+
+        # Platform-specific copy commands
+        ${if pkgs.stdenv.isDarwin then ''
+          bind-key -T copy-mode-vi Enter send -X copy-pipe "pbcopy"
+        '' else ''
+          bind-key -T copy-mode-vi Enter send -X copy-pipe "xclip -i -selection clipboard"
+        ''}
       '';
     };
 

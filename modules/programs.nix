@@ -98,6 +98,7 @@ in
     brews = [
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
       "gh"
+      "mas"
       # "docker-completion"
       # {
       #   name = "emacs-plus@31";

@@ -83,7 +83,7 @@ in
       WeCom = 1189898970; # Wechat for Work
       TecentMetting = 1484048379;
       BaiduNetDisk = 547166701;
-      # Xcode = 497799835;
+      Xcode = 497799835;
       # NeteaseCloudMusic = 944848654;
       # QQ = 451108668;
       # QQMusic = 595615424;

@@ -42,7 +42,9 @@ in
       # nodejs
       # typescript
       bun
+      # TODO: replace python3 with uv
       python3
+      # uv
 
       # lsp servers
       nixd
@@ -61,6 +63,10 @@ in
       go-tools # Collection of tools and libraries for working with Go code, including linters and static analysis
       gofumpt # Stricter gofmt
       delve
+      gomodifytags
+      gotests
+      (pkgs.callPackage ./pkgs/go/reftools.nix {}) # fillstruct
+      (pkgs.callPackage ./pkgs/go/impl.nix {}) # impl
 
       # devtools
       jq
@@ -115,7 +121,6 @@ in
       # google-chrome
       brave
       telegram-desktop
-      mpv-unwrapped
       jetbrains.idea-community
       # kanata # TODO: cross-platform software keyboard remapper for Linux, macOS and Windows
       dbeaver-bin
@@ -328,6 +333,15 @@ in
     #   package = pkgs.firefox-devedition-unwrapped;
     #   languagePacks = ["zh-CN"];
     # };
+
+    mpv = {
+      enable = true;
+      package = pkgs.mpv-unwrapped;
+      bindings = {
+        LEFT = "seek -5 exact";
+        RIGHT = "seek 5 exact";
+      };
+    };
   };
 
   # mirror

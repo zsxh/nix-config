@@ -42,16 +42,15 @@ in
       # nodejs
       # typescript
       bun
-      # TODO: replace python3 with uv
       python3
-      # uv
+      uv
 
       # lsp servers
       nixd
       nixfmt-rfc-style # nix formatter
       lua-language-server
-      # basedpyright
-      pyright
+      basedpyright
+      pyright # TODO: remove
       ruff # python linter
       black # python formatter
       typescript-language-server
@@ -65,8 +64,8 @@ in
       delve
       gomodifytags
       gotests
-      (pkgs.callPackage ./pkgs/go/reftools.nix {}) # fillstruct
-      (pkgs.callPackage ./pkgs/go/impl.nix {}) # impl
+      (pkgs.callPackage ./pkgs/go/reftools.nix { }) # fillstruct
+      (pkgs.callPackage ./pkgs/go/impl.nix { }) # impl
 
       # devtools
       jq
@@ -115,6 +114,7 @@ in
       # zsh-history-to-fish
       grpcurl
       # harlequin # The SQL IDE for Your Terminal.
+      mermaid-cli # FIXME: broken mmdc
 
       # gui apps
       # firefox-devedition-unwrapped
@@ -171,6 +171,7 @@ in
     # Go
     GOPROXY = "https://goproxy.cn,direct";
     GOPATH = "${config.home.homeDirectory}/.local/share/go";
+    GOROOT = "${pkgs.go}/share/go";
   };
 
   programs = {
@@ -309,17 +310,39 @@ in
         bind j select-pane -D
 
         # Platform-specific copy commands
-        ${if pkgs.stdenv.isDarwin then ''
-          bind-key -T copy-mode-vi Enter send -X copy-pipe "pbcopy"
-        '' else ''
-          bind-key -T copy-mode-vi Enter send -X copy-pipe "xclip -i -selection clipboard"
-        ''}
+        ${
+          if pkgs.stdenv.isDarwin then
+            ''
+              bind-key -T copy-mode-vi Enter send -X copy-pipe "pbcopy"
+            ''
+          else
+            ''
+              bind-key -T copy-mode-vi Enter send -X copy-pipe "xclip -i -selection clipboard"
+            ''
+        }
       '';
     };
 
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+      stdlib = ''
+        layout_uv() {
+            if [[ -d ".venv" ]]; then
+                VIRTUAL_ENV="$(pwd)/.venv"
+            fi
+
+            if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+                log_status "No virtual environment exists. Executing \`uv venv\` to create one."
+                uv venv
+                VIRTUAL_ENV="$(pwd)/.venv"
+            fi
+
+            PATH_add "$VIRTUAL_ENV/bin"
+            export UV_ACTIVE=1  # or VENV_ACTIVE=1
+            export VIRTUAL_ENV
+        }
+      '';
     };
 
     # set JAVA_HOME
@@ -341,6 +364,11 @@ in
         LEFT = "seek -5 exact";
         RIGHT = "seek 5 exact";
       };
+    };
+
+    obs-studio = {
+      enable = pkgs.stdenv.isLinux;
+      plugins = [ ];
     };
   };
 

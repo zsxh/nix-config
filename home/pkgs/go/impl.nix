@@ -23,6 +23,7 @@ buildGoModule (finalAttrs: {
     export GOPROXY=https://goproxy.cn,direct
   '';
   proxyVendor = true; # 允许下载
+  # allowGoReference = true;  # Enable references to the Go toolchain, 防止找不到 $GOROOT
 
   meta = {
     description = "Go tool to generates method stubs for implementing an interface";

@@ -129,6 +129,8 @@ in
       "firefox@developer-edition"
       "clash-verge-rev"
       # "alt-tab"
+      "obs"
+      # "vlc"
     ];
   };
 }

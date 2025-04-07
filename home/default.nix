@@ -24,15 +24,16 @@ in
   home.packages =
     with pkgs;
     [
-      # editor
-      # TODO: upgrade packages exclude external packages managed by nix
+      # emacs
       ((emacsPackagesFor zsxh-emacs).emacsWithPackages (
         epkgs: with epkgs; [
           vterm
           pdf-tools
+          telega
           treesit-grammars.with-all-grammars
         ]
       ))
+      # TODO: remove
       emacsPackages.telega
       emacs-lsp-booster
 
@@ -78,7 +79,6 @@ in
       lazydocker
       maven
       # pnpm
-      pdm
       mkcert
       termshark
       iredis

@@ -131,6 +131,7 @@ in
       # "alt-tab"
       "obs"
       # "vlc"
+      "pixpin"
     ];
   };
 }

@@ -29,13 +29,14 @@ in
         epkgs: with epkgs; [
           vterm
           pdf-tools
-          telega
+          # telega
           treesit-grammars.with-all-grammars
         ]
       ))
-      # TODO: remove
-      emacsPackages.telega
-      emacs-lsp-booster
+      # emacsPackages.telega
+      # emacs-lsp-booster
+      (emacsPackagesFor zsxh-emacs).telega
+      (emacs-lsp-booster.override { emacs = zsxh-emacs; })
 
       # program languages
       clojure
@@ -228,6 +229,7 @@ in
       shellInit = ''
         set -g fish_greeting
         fish_add_path -ga ~/.orbstack/bin
+        fish_add_path -ga ~/.local/bin
       '';
       shellAliases = {
         ls = "ls --color=auto --group-directories-first";

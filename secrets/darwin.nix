@@ -23,17 +23,17 @@
   ];
 
   age.secrets = {
-    # "searxng-settings.yml" = {
-    #   file = "${mysecrets}/searxng-settings.yml.age";
-    #   # user_readable
-    #   mode = "0500";
-    #   owner = "${username}";
-    # };
+    "searxng-settings.yml" = {
+      file = "${mysecrets}/searxng-settings.yml.age";
+      # user_readable
+      mode = "0500";
+      owner = "${username}";
+    };
   };
 
   environment.etc = {
-    # "searxng/settings.yml" = {
-    #   source = config.age.secrets."searxng-settings.yml".path;
-    # };
+    "searxng/settings.yml" = {
+      source = config.age.secrets."searxng-settings.yml".path;
+    };
   };
 }

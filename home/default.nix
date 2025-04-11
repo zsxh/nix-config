@@ -116,6 +116,7 @@ in
       grpcurl
       # harlequin # The SQL IDE for Your Terminal.
       mermaid-cli # FIXME: broken mmdc
+      tokei # count code
 
       # gui apps
       # firefox-devedition-unwrapped
@@ -138,7 +139,7 @@ in
     ]
     ++ [
       # self-hosted
-      # searxng # A privacy-respecting, hackable metasearch engine
+      searxng # A privacy-respecting, hackable metasearch engine
     ];
 
   home.file = {
@@ -393,4 +394,5 @@ in
       ]
     }
   '';
+
 }

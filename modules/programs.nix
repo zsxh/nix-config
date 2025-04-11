@@ -108,6 +108,7 @@ in
       # "poppler"
       # "libvterm"
       # "tree-sitter"
+      "portaudio"
     ];
 
     # `brew install --cask`
@@ -132,6 +133,36 @@ in
       "obs"
       # "vlc"
       "pixpin"
+
+      # BlackHole is a modern macOS virtual audio loopback driver that allows applications to pass audio to other applications with zero additional latency.
+      # - Restart CoreAudio with the terminal command: sudo killall -9 coreaudiod
+      # - Multi Output Device Setup: https://github.com/ExistentialAudio/BlackHole/wiki/Multi-Output-Device
+      "blackhole-2ch"
     ];
   };
+
+  # NOTE: https://mynixos.com/nix-darwin/options/launchd.agents.<name>
+  launchd.user.agents = lib.mkIf pkgs.stdenv.isDarwin {
+    # - 加载用户级服务（agent）
+    #   launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/org.example.myapp.plist
+    # - 加载系统级服务（daemon，需要 sudo）
+    #   sudo launchctl bootstrap system /Library/LaunchDaemons/org.example.myapp.plist
+    # - 查看服务
+    #   launchctl list
+    # - 启动服务
+    #   launchctl start org.nixos.searxng
+    # - 停止服务
+    #   launchctl stop org.nixos.searxng
+    searxng = {
+      command = "${pkgs.searxng}/bin/searxng-run";
+      # environment = { ... };
+      serviceConfig = {
+        StandardOutPath = "/tmp/searxng/searxng.log";
+        StandardErrorPath = "/tmp/searxng/searxng.err";
+        KeepAlive = false;
+        RunAtLoad = false;
+      };
+    };
+  };
+
 }

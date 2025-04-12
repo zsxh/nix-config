@@ -71,6 +71,7 @@ in
 
       # devtools
       jq
+      yq-go
       act
       buildpack
       kubernetes-helm

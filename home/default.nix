@@ -29,7 +29,7 @@ in
         epkgs: with epkgs; [
           vterm
           pdf-tools
-          (melpaPackages.telega)  # 强制使用 melpa 版 telega，而不是 melpa-stable 版的
+          (melpaPackages.telega) # 强制使用 melpa 版 telega，而不是 melpa-stable 版的
           treesit-grammars.with-all-grammars
         ]
       ))
@@ -118,6 +118,7 @@ in
       # harlequin # The SQL IDE for Your Terminal.
       mermaid-cli # FIXME: broken mmdc
       tokei # count code
+      yt-dlp
 
       # gui apps
       # firefox-devedition-unwrapped
@@ -271,6 +272,8 @@ in
         cursor_shape = "block"; # 光标形状：beam、block 或 underline
         cursor_blink_interval = 0; # 禁止光标闪烁
         macos_option_as_alt = "both"; # Don't break any Alt+Key keyboard shortcuts
+        allow_remote_control = "socket-only"; # password, socket-only, socket, no, yes
+        listen_on = "unix:/tmp/mykitty";
       };
     };
 
@@ -367,6 +370,9 @@ in
       bindings = {
         LEFT = "seek -5 exact";
         RIGHT = "seek 5 exact";
+      };
+      config = {
+        hr-seek = "yes";
       };
     };
 

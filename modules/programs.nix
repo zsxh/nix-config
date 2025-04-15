@@ -160,7 +160,7 @@ in
         StandardOutPath = "/tmp/searxng/searxng.log";
         StandardErrorPath = "/tmp/searxng/searxng.err";
         KeepAlive = false;
-        RunAtLoad = false;
+        RunAtLoad = true;
       };
     };
   };

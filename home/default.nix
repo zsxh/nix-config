@@ -75,7 +75,8 @@ in
       act
       buildpack
       kubernetes-helm
-      k3d
+      minikube
+      # k3d
       k9s
       kubectl
       lazydocker
@@ -133,6 +134,7 @@ in
       # NOTE: Add "nix" to the "allow full disk access" security list if the build fails
       # with 'Operation not permitted' for some packages
       utm # virtual machine
+      vfkit # Simple command line tool to start VMs through the macOS Virtualization framework
     ]
     ++ lib.optionals stdenv.isLinux [
       wireshark

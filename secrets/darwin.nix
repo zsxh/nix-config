@@ -25,8 +25,7 @@
   age.secrets = {
     "searxng-settings.yml" = {
       file = "${mysecrets}/searxng-settings.yml.age";
-      # user_readable
-      mode = "0500";
+      mode = "0544";
       owner = "${username}";
     };
   };

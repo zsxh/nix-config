@@ -135,6 +135,7 @@ in
       # with 'Operation not permitted' for some packages
       utm # virtual machine
       vfkit # Simple command line tool to start VMs through the macOS Virtualization framework
+      # lima
     ]
     ++ lib.optionals stdenv.isLinux [
       wireshark

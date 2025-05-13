@@ -300,11 +300,12 @@ in
       keyMode = "vi";
       extraConfig = ''
         # 设置状态栏
-        # $(echo $USER) - shows the current username
-        # #H - shows the hostname of your computer
-        # %h %d %Y - date in the [Mon DD YYYY] format
-        # %l:%M %p - time in the [HH:MM AM/PM] format
-        set -g status-right "#H %l:%M %p %Y-%m-%d%a"
+        set -g automatic-rename on
+        set -g status-right "%Y-%m-%d %H:%M %a"
+        set -g status-left-style "bold,fg=colour21"
+        # set -g window-status-current-style "bold"
+        # set -g status 2
+        # set -g status-format[1] '[#(tmux ls -F "##S##{?session_attached,*,}" | tr "\n" " " | sed "s/ $//" )]'
 
         # 绑定快捷键
         bind c new-window -c "#{pane_current_path}"

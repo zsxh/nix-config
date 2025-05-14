@@ -301,9 +301,8 @@ in
       extraConfig = ''
         # 设置状态栏
         set -g automatic-rename on
-        set -g status-right "%Y-%m-%d %H:%M %a"
-        set -g status-left-style "bold,fg=colour21"
-        # set -g window-status-current-style "bold"
+        set -g status-left ""
+        set -g status-right "#[fg=colour33,bold][#S]#[default] %Y-%m-%d %H:%M %a"
         # set -g status 2
         # set -g status-format[1] '[#(tmux ls -F "##S##{?session_attached,*,}" | tr "\n" " " | sed "s/ $//" )]'
 

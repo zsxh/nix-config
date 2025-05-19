@@ -24,4 +24,6 @@
     # TODO: https://nixos.wiki/wiki/SSH_public_key_authentication
     # openssh.authorizedKeys.keys = [];
   };
+
+  system.primaryUser = lib.mkIf (pkgs.stdenv.isDarwin) "${username}";
 }

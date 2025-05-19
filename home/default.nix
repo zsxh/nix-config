@@ -29,13 +29,13 @@ in
         epkgs: with epkgs; [
           vterm
           pdf-tools
-          (melpaPackages.telega) # 强制使用 melpa 版 telega，而不是 melpa-stable 版的
+          # (melpaPackages.telega) # 强制使用 melpa 版 telega，而不是 melpa-stable 版的
           treesit-grammars.with-all-grammars
         ]
       ))
       # emacsPackages.telega
       # emacs-lsp-booster
-      # (emacsPackagesFor zsxh-emacs).telega
+      (emacsPackagesFor zsxh-emacs).melpaPackages.telega
       (emacs-lsp-booster.override { emacs = zsxh-emacs; })
 
       # program languages

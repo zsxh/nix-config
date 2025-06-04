@@ -16,17 +16,20 @@
 
     # 指定二进制缓存服务器的 URL。Nix 会从这些服务器下载预构建的包，而不是从源码构建
     substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirrors.sustech.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
+      # "https://nix-community.cachix.org"
     ];
 
     # 指定信任的公钥列表。这些公钥用于验证从缓存服务器下载的包的签名。这里配置了两个公钥
-    # trusted-public-keys = [
-    #   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    # ];
+    trusted-public-keys = [
+      # the default public key of cache.nixos.org, it's built-in, no need to add it here
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
 
     # 构建器（builders）可以使用缓存中的预构建包，而不是从头构建
     builders-use-substitutes = true;

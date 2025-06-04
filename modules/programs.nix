@@ -133,6 +133,7 @@ in
       "obs"
       # "vlc"
       "pixpin"
+      "activitywatch"
 
       # BlackHole is a modern macOS virtual audio loopback driver that allows applications to pass audio to other applications with zero additional latency.
       # - Restart CoreAudio with the terminal command: sudo killall -9 coreaudiod

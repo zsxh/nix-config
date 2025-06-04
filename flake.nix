@@ -4,15 +4,18 @@
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
     substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirrors.sustech.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
     ];
-    # trusted-public-keys = [
-    #   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    # ];
+    trusted-public-keys = [
+      # the default public key of cache.nixos.org, it's built-in, no need to add it here
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 
   inputs = {
@@ -27,7 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/f02060c00ccf9a7ce3786ee69e1ffdcd10fcdf9a";
+      url = "github:nix-community/emacs-overlay/88b4b5a913f6f2c257851d275640831fb8dd5825";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # secrets management

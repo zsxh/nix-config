@@ -82,7 +82,7 @@ in
       Wechat = 836500024;
       WeCom = 1189898970; # Wechat for Work
       TecentMetting = 1484048379;
-      BaiduNetDisk = 547166701;
+      # BaiduNetDisk = 547166701;
       Xcode = 497799835;
       # NeteaseCloudMusic = 944848654;
       # QQ = 451108668;
@@ -134,6 +134,8 @@ in
       # "vlc"
       "pixpin"
       "activitywatch"
+      # "capcut"
+      "telegram"
 
       # BlackHole is a modern macOS virtual audio loopback driver that allows applications to pass audio to other applications with zero additional latency.
       # - Restart CoreAudio with the terminal command: sudo killall -9 coreaudiod

@@ -128,9 +128,6 @@ in
       jetbrains.idea-community
       # kanata # TODO: cross-platform software keyboard remapper for Linux, macOS and Windows
       dbeaver-bin
-
-      # game
-      # ryubing # Nintendo Switch Emulator
     ]
     ++ lib.optionals stdenv.isDarwin [
       # NOTE: Add "nix" to the "allow full disk access" security list if the build fails
@@ -144,6 +141,8 @@ in
       docker
       redisinsight
       telegram-desktop
+      # game
+      # ryubing # Nintendo Switch Emulator
     ]
     ++ [
       # self-hosted

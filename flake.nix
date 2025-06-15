@@ -30,7 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/8a5a6034a2371522029b6217febfd0383d934983";
+      url = "github:nix-community/emacs-overlay/358d35f9c2725d54448e95e53426f793b0316448";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # secrets management
@@ -74,7 +74,7 @@
           home-manager.darwinModules.home-manager
           {
             nixpkgs.overlays = [
-              (import ./overlays/mps-overlay.nix)
+              # (import ./overlays/mps-overlay.nix)
               emacs-overlay.overlay
             ];
             home-manager.useGlobalPkgs = true;

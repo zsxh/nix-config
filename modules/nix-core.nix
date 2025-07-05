@@ -53,10 +53,10 @@
     options = lib.mkDefault "--delete-older-than 7d";
 
     # NixOS专用配置
-    dates = lib.mkIf (pkgs.stdenv.isLinux) "weekly";
+    dates = lib.mkIf (pkgs.stdenv.hostPlatform.isLinux) "weekly";
 
     # nix-darwin专用配置
-    interval = lib.mkIf (pkgs.stdenv.isDarwin) {
+    interval = lib.mkIf (pkgs.stdenv.hostPlatform.isDarwin) {
       Weekday = 0;
       Hour = 0;
       Minute = 0;

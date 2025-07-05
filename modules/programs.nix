@@ -14,6 +14,13 @@ let
     HOMEBREW_BREW_GIT_REMOTE = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git";
     HOMEBREW_CORE_GIT_REMOTE = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git";
     HOMEBREW_PIP_INDEX_URL = "https://pypi.tuna.tsinghua.edu.cn/simple";
+
+    # bfsu mirror
+    # HOMEBREW_API_DOMAIN = "https://mirrors.bfsu.edu.cn/homebrew-bottles/api";
+    # HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.bfsu.edu.cn/homebrew-bottles";
+    # HOMEBREW_BREW_GIT_REMOTE = "https://mirrors.bfsu.edu.cn/git/homebrew/brew.git";
+    # HOMEBREW_CORE_GIT_REMOTE = "https://mirrors.bfsu.edu.cn/git/homebrew/homebrew-core.git";
+    # HOMEBREW_PIP_INDEX_URL = "https://pypi.tuna.tsinghua.edu.cn/simple";
   };
   homebrew_env_script = lib.attrsets.foldlAttrs (
     acc: name: value:
@@ -69,8 +76,7 @@ in
     onActivation = {
       autoUpdate = false; # Fetch the newest stable branch of Homebrew's git repo
       upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
-      # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
-      cleanup = "zap";
+      cleanup = "zap"; # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
     };
 
     # Applications to install from Mac App Store using mas.
@@ -87,11 +93,13 @@ in
       # NeteaseCloudMusic = 944848654;
       # QQ = 451108668;
       # QQMusic = 595615424;
+      TickTickTodo = 966085870;
     };
 
     taps = [
       # "homebrew/services"
       # "d12frosted/emacs-plus"
+      # deskflow/homebrew-tap # Deskflow is a free and open source keyboard and mouse sharing app
     ];
 
     # `brew install`
@@ -109,6 +117,7 @@ in
       # "libvterm"
       # "tree-sitter"
       "portaudio"
+      "mupdf"
     ];
 
     # `brew install --cask`
@@ -145,7 +154,7 @@ in
   };
 
   # NOTE: https://mynixos.com/nix-darwin/options/launchd.agents.<name>
-  launchd.user.agents = lib.mkIf pkgs.stdenv.isDarwin {
+  launchd.user.agents = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     # - 加载用户级服务（agent）
     #   launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/org.example.myapp.plist
     # - 加载系统级服务（daemon，需要 sudo）

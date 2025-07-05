@@ -7,11 +7,11 @@ self: super: {
 
     # 根据平台动态调整构建参数
     nativeBuildInputs =
-      if super.stdenv.isDarwin then [ super.xcbuildHook ] else oldAttrs.nativeBuildInputs;
+      if super.stdenv.hostPlatform.isDarwin then [ super.xcbuildHook ] else oldAttrs.nativeBuildInputs;
 
-    sourceRoot = super.lib.optionalString super.stdenv.isDarwin "${oldAttrs.src.name}/code";
+    sourceRoot = super.lib.optionalString super.stdenv.hostPlatform.isDarwin "${oldAttrs.src.name}/code";
 
-    xcbuildFlags = super.lib.optionals super.stdenv.isDarwin [
+    xcbuildFlags = super.lib.optionals super.stdenv.hostPlatform.isDarwin [
       "-configuration"
       "Release"
       "-project"
@@ -20,7 +20,7 @@ self: super: {
     ];
 
     installPhase =
-      if super.stdenv.isDarwin then
+      if super.stdenv.hostPlatform.isDarwin then
         ''
           mkdir -p $out/lib
           cp "$TMPDIR/source/code/Products/Release/libmps.a" $out/lib/
@@ -32,7 +32,7 @@ self: super: {
         oldAttrs.installPhase;
 
     # 保持Linux平台的原始补丁
-    postPatch = super.lib.optionalString super.stdenv.isLinux ''
+    postPatch = super.lib.optionalString super.stdenv.hostPlatform.isLinux ''
       substituteInPlace code/gc.gmk --replace-fail '-Werror ' ' '
       substituteInPlace code/gp.gmk --replace-fail '-Werror ' ' '
       substituteInPlace code/ll.gmk --replace-fail '-Werror ' ' '

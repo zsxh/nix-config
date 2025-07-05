@@ -84,7 +84,7 @@ in
       # pnpm
       mkcert
       termshark
-      iredis
+      # iredis
       aider-chat
       ffmpegthumbnailer # Lightweight video thumbnailer
       epub-thumbnailer
@@ -129,14 +129,14 @@ in
       # kanata # TODO: cross-platform software keyboard remapper for Linux, macOS and Windows
       dbeaver-bin
     ]
-    ++ lib.optionals stdenv.isDarwin [
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
       # NOTE: Add "nix" to the "allow full disk access" security list if the build fails
       # with 'Operation not permitted' for some packages
       utm # virtual machine
       vfkit # Simple command line tool to start VMs through the macOS Virtualization framework
       # lima
     ]
-    ++ lib.optionals stdenv.isLinux [
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
       wireshark
       docker
       redisinsight
@@ -323,7 +323,7 @@ in
 
         # Platform-specific copy commands
         ${
-          if pkgs.stdenv.isDarwin then
+          if pkgs.stdenv.hostPlatform.isDarwin then
             ''
               bind-key -T copy-mode-vi Enter send -X copy-pipe "pbcopy"
             ''
@@ -382,7 +382,7 @@ in
     };
 
     obs-studio = {
-      enable = pkgs.stdenv.isLinux;
+      enable = pkgs.stdenv.hostPlatform.isLinux;
       plugins = [ ];
     };
   };

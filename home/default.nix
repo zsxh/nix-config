@@ -238,6 +238,7 @@ in
         set -g fish_greeting
         fish_add_path -ga ~/.orbstack/bin
         fish_add_path -ga ~/.local/bin
+        fish_add_path -ga "$HOME/.moon/bin"
       '';
       shellAliases = {
         ls = "ls --color=auto --group-directories-first";

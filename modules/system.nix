@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 ###################################################################################
 #
 #  macOS's System configuration
@@ -15,6 +15,11 @@
     # $ darwin-rebuild changelog
     stateVersion = 5;
   };
+
+  # Disable press and hold for diacritics.
+  # I want to be able to press and hold j and k
+  # in VSCode with vim keys to move around.
+  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = lib.mkIf (pkgs.stdenv.hostPlatform.isDarwin) false;
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";

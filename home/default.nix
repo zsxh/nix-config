@@ -8,7 +8,7 @@
 }:
 let
   zsxh-emacs = pkgs.emacs-igc.override {
-    withNativeCompilation = false;
+    withNativeCompilation = true;
   };
 in
 {

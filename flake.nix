@@ -30,7 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/358d35f9c2725d54448e95e53426f793b0316448";
+      url = "github:nix-community/emacs-overlay/5c75507a03c0ee10985b9124a344fd457a219c63";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # secrets management

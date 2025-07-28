@@ -129,8 +129,8 @@ in
       "wireshark"
       "visual-studio-code"
       "cherry-studio"
-      "trae"
-      "cursor"
+      # "trae"
+      # "cursor"
       "redis-insight"
 
       # others

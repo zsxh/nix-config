@@ -28,7 +28,7 @@ in
       ((emacsPackagesFor zsxh-emacs).emacsWithPackages (
         epkgs: with epkgs; [
           vterm
-          pdf-tools
+          # pdf-tools
           # (melpaPackages.telega) # 强制使用 melpa 版 telega，而不是 melpa-stable 版的
           treesit-grammars.with-all-grammars
         ]
@@ -85,7 +85,7 @@ in
       mkcert
       termshark
       # iredis
-      aider-chat
+      # aider-chat
       ffmpegthumbnailer # Lightweight video thumbnailer
       epub-thumbnailer
       vips
@@ -120,6 +120,9 @@ in
       mermaid-cli # FIXME: broken mmdc
       tokei # count code
       yt-dlp
+
+      # ai tools
+      claude-code
 
       # gui apps
       # firefox-devedition-unwrapped

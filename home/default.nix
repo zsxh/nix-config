@@ -286,14 +286,19 @@ in
       };
     };
 
-    # ghostty = {
-    #   enable = true;
-    #   settings = {
-    #     theme = "DoomOne";
-    #     font-family = "Fira Code";
-    #     font-size = 16;
-    #   };
-    # };
+    ghostty = {
+      enable = true;
+      package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+      settings = {
+        theme = "DoomOne";
+        font-family = "Fira Code";
+        font-size = 16;
+        shell-integration-features = "no-cursor";
+        cursor-style = "block";
+        cursor-style-blink = false;
+        macos-option-as-alt = true;
+      };
+    };
 
     tmux = {
       enable = true;

@@ -16,12 +16,12 @@
 
     # 指定二进制缓存服务器的 URL。Nix 会从这些服务器下载预构建的包，而不是从源码构建
     substituters = [
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://mirrors.sustech.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      # "https://mirrors.sustech.edu.cn/nix-channels/store"
+      # "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
-      # "https://nix-community.cachix.org"
+      "https://nix-community.cachix.org"
     ];
 
     # 指定信任的公钥列表。这些公钥用于验证从缓存服务器下载的包的签名。这里配置了两个公钥

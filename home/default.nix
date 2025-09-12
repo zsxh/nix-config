@@ -8,7 +8,7 @@
 }:
 let
   zsxh-emacs = pkgs.emacs-igc.override {
-    withNativeCompilation = true;
+    withNativeCompilation = false;
   };
 in
 {
@@ -41,7 +41,7 @@ in
       # program languages
       clojure
       go
-      # nodejs
+      nodejs_24
       # typescript
       bun
       python3
@@ -68,6 +68,7 @@ in
       gotests
       (pkgs.callPackage ./pkgs/go/reftools.nix { }) # fillstruct
       (pkgs.callPackage ./pkgs/go/impl.nix { }) # impl
+      # moonbit-bin.lsp.latest
 
       # devtools
       jq
@@ -81,7 +82,7 @@ in
       kubectl
       lazydocker
       maven
-      # pnpm
+      pnpm
       mkcert
       termshark
       # iredis
@@ -272,7 +273,7 @@ in
 
     # terminal
     kitty = {
-      enable = true;
+      enable = false;
       themeFile = "Doom_One";
       shellIntegration.mode = "no-cursor";
       settings = {
@@ -312,8 +313,8 @@ in
       extraConfig = ''
         # 设置状态栏
         set -g automatic-rename on
-        set -g status-left ""
-        set -g status-right "#[fg=colour33,bold][#S]#[default] %Y-%m-%d %H:%M %a"
+        set -g status-left "#[fg=colour33,bold][#S]#[default] "
+        set -g status-right "%Y-%m-%d %H:%M %a"
         # set -g status 2
         # set -g status-format[1] '[#(tmux ls -F "##S##{?session_attached,*,}" | tr "\n" " " | sed "s/ $//" )]'
 

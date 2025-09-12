@@ -142,7 +142,7 @@ in
       "obs"
       # "vlc"
       "pixpin"
-      "activitywatch"
+      # "activitywatch"
       # "capcut"
       "telegram"
 

@@ -4,10 +4,10 @@
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
     substituters = [
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://mirrors.sustech.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      # "https://mirrors.sustech.edu.cn/nix-channels/store"
+      # "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
     ];
@@ -30,9 +30,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/dc8f6950b1d59a7275b7ab3a275ca43cf8632a2e";
+      url = "github:nix-community/emacs-overlay/eabe03335ec98f151eefcdbe859abacfeea5e7f5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # moonbit-overlay = {
+    #   url = "github:jetjinser/moonbit-overlay/d3100f61740a45bdb8e7c061f411338562599d7f";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # secrets management
     agenix = {
       url = "github:ryantm/agenix";
@@ -51,6 +55,7 @@
       nix-darwin,
       home-manager,
       emacs-overlay,
+      # moonbit-overlay,
       ...
     }:
     let
@@ -76,6 +81,7 @@
             nixpkgs.overlays = [
               # (import ./overlays/mps-overlay.nix)
               emacs-overlay.overlay
+              # moonbit-overlay.overlays.default
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

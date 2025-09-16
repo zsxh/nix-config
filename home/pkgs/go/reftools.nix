@@ -11,8 +11,9 @@ buildGoModule {
   src = fetchFromGitHub {
     owner = "davidrjenni";
     repo = "reftools";
-    rev = "f5f96ef1885420cd327f39d1d90d8bedd7c7e918";
-    sha256 = "sha256-ZTtV2GwyUTa2HSwwPtD/hVxtLGotVDUT3Ig/XrfBJnY=";
+    rev = "34b10582faa4220d684a595b3e1237f244707e23";
+    sha256 = "sha256-nxnJzbFViU8O+Yw1+7GhsrhBiQC7WhsK3rcwMAZDTmM=";
+    # sha256 = lib.fakeSha256;
   };
 
   vendorHash = null;

@@ -7,9 +7,21 @@
   ...
 }:
 let
-  zsxh-emacs = pkgs.emacs-igc.override {
-    withNativeCompilation = false;
-  };
+  zsxh-emacs =
+    (pkgs.emacs-igc.override {
+      withNativeCompilation = false;
+    }).overrideAttrs
+      (old: {
+        # https://github.com/natrys/whisper.el/wiki/MacOS-Configuration#grant-emacs-permission-to-use-mic
+        # Grant Emacs permission to use Mic
+        postPatch = old.postPatch or "" + ''
+                sed -i.bak '/^<dict>/a\
+          	<!-- Microphone access -->\
+          	<key>NSMicrophoneUsageDescription</key>\
+          	<string>Emacs requires permission to access the Microphone.</string>\
+          ' nextstep/templates/Info.plist.in
+        '';
+      });
 in
 {
   imports = [
@@ -292,7 +304,7 @@ in
       enable = true;
       package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
       settings = {
-        theme = "DoomOne";
+        theme = "Doom One";
         font-family = "Fira Code";
         font-size = 16;
         shell-integration-features = "no-cursor";
@@ -311,6 +323,9 @@ in
       terminal = "screen-256color";
       mouse = true; # 启用鼠标支持
       keyMode = "vi";
+      # plugins = with pkgs; [
+      #   tmuxPlugins.resurrect
+      # ];
       extraConfig = ''
         # 设置状态栏
         set -g automatic-rename on

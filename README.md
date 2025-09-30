@@ -18,7 +18,7 @@ substituters = "https://mirrors.sustech.edu.cn/nix-channels/store" "https://mirr
 
 ## Others
 
-### clash-verge-rev rules
+### clash-verge-rev rules example
 
 ```js
 /**
@@ -41,3 +41,5 @@ function main(config) {
   return config;
 }
 ```
+
+其他规则: https://github.com/zsxh/nix-secrets/blob/main/clash-verge-rules.js

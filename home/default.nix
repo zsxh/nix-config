@@ -158,8 +158,11 @@ in
       docker
       redisinsight
       telegram-desktop
+
       # game
       # ryubing # Nintendo Switch Emulator
+
+      # gns3-gui # Network Simulator
     ]
     ++ [
       # self-hosted

@@ -17,12 +17,29 @@
   ];
 
   age.secrets = {
-    "github-api-token" = {
-      file = "${mysecrets}/github-api-token.age";
+    "github-api-key" = {
+      file = "${mysecrets}/secrets/api/github.age";
+    };
+    "context7-api-key" = {
+      file = "${mysecrets}/secrets/api/context7.age";
+    };
+    "exa-api-key" = {
+      file = "${mysecrets}/secrets/api/exa.age";
+    };
+    "metaso-api-key" = {
+      file = "${mysecrets}/secrets/api/metaso.age";
+    };
+    "tavily-api-key" = {
+      file = "${mysecrets}/secrets/api/tavily.age";
     };
   };
 
   home.sessionVariables = {
-    GITHUB_API_TOKEN = "$(cat ${config.age.secrets.github-api-token.path})";
+    GITHUB_API_TOKEN = "$(cat ${config.age.secrets.github-api-key.path})";
+    CONTEXT7_API_KEY = "$(cat ${config.age.secrets.context7-api-key.path})";
+    EXA_API_KEY = "$(cat ${config.age.secrets.exa-api-key.path})";
+    METASO_API_KEY = "$(cat ${config.age.secrets.metaso-api-key.path})";
+    TAVILY_API_KEY = "$(cat ${config.age.secrets.tavily-api-key.path})";
   };
+
 }

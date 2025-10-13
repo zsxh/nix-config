@@ -12,6 +12,9 @@ let
       withNativeCompilation = false;
     }).overrideAttrs
       (old: {
+        # 仅移除 mps 依赖，保留 --with-mps 标志
+        buildInputs = lib.lists.remove pkgs.mps (old.buildInputs or []);
+
         # https://github.com/natrys/whisper.el/wiki/MacOS-Configuration#grant-emacs-permission-to-use-mic
         # Grant Emacs permission to use Mic
         postPatch = old.postPatch or "" + ''

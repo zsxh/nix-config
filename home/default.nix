@@ -13,7 +13,7 @@ let
     }).overrideAttrs
       (old: {
         # 仅移除 mps 依赖，保留 --with-mps 标志
-        buildInputs = lib.lists.remove pkgs.mps (old.buildInputs or []);
+        buildInputs = lib.lists.remove pkgs.mps (old.buildInputs or [ ]);
 
         # https://github.com/natrys/whisper.el/wiki/MacOS-Configuration#grant-emacs-permission-to-use-mic
         # Grant Emacs permission to use Mic
@@ -204,6 +204,9 @@ in
     GOPROXY = "https://goproxy.cn,direct";
     GOPATH = "${config.home.homeDirectory}/.local/share/go";
     GOROOT = "${pkgs.go}/share/go";
+
+    # MoonBit
+    MOONBIT_INSTALL_VERSION = "nightly";
   };
 
   programs = {

@@ -116,8 +116,8 @@ in
       # "poppler"
       # "libvterm"
       # "tree-sitter"
-      "portaudio"
-      "mupdf"
+      # "portaudio"
+      # "mupdf"
     ];
 
     # `brew install --cask`

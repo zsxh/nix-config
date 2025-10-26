@@ -129,7 +129,7 @@ in
       python313Packages.huggingface-hub # Programs provided: huggingface-cli
       hurl # Command line tool that performs HTTP requests defined in a simple plain text format
       whisper-cpp # High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model
-      unrar
+      # unrar
       hugo # Fast and modern static website engine
       # zsh-history-to-fish
       grpcurl

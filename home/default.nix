@@ -435,12 +435,12 @@ in
   # 国内的 Docker Hub 镜像加速器
   # https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6
   # https://github.com/DaoCloud/public-image-mirror
-  home.file.".orbstack/config/docker.json".text = ''
-    {
-      "registry-mirrors": [
-        "https://docker.m.daocloud.io"
-      ]
-    }
-  '';
+  # home.file.".orbstack/config/docker.json".text = ''
+  #   {
+  #     "registry-mirrors": [
+  #       "https://docker.m.daocloud.io"
+  #     ]
+  #   }
+  # '';
 
 }

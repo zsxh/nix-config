@@ -100,6 +100,7 @@ in
       # "homebrew/services"
       # "d12frosted/emacs-plus"
       # deskflow/homebrew-tap # Deskflow is a free and open source keyboard and mouse sharing app
+      # "slp/krun"
     ];
 
     # `brew install`
@@ -118,6 +119,7 @@ in
       # "tree-sitter"
       # "portaudio"
       # "mupdf"
+      # "krunvm"
     ];
 
     # `brew install --cask`

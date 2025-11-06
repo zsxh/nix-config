@@ -107,7 +107,7 @@ in
       vips
       mediainfo # Supplies technical and tag information about a video or audio file
       imagemagick # Software suite to create, edit, compose, or convert bitmap images
-      poppler_utils # PDF rendering library
+      poppler-utils # PDF rendering library
       _7zz # Programs provided: 7zz, Command line archiver utility
       fd
       bat # Cat(1) clone with syntax highlighting and Git integration
@@ -214,10 +214,11 @@ in
       enable = true;
       lfs.enable = true;
 
-      userName = username;
-      userEmail = "bnbvbchen@gmail.com";
-
-      extraConfig = {
+      settings = {
+        user = {
+          name = username;
+          email = "bnbvbchen@gmail.com";
+        };
         core = {
           quotepath = false;
         };

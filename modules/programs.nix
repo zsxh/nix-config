@@ -120,6 +120,7 @@ in
       # "portaudio"
       # "mupdf"
       # "krunvm"
+      "html2markdown"
     ];
 
     # `brew install --cask`

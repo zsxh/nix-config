@@ -30,7 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/0e3c4a7d197b9e1f6145a914138225125c415887";
+      url = "github:nix-community/emacs-overlay/9ee0ae2e10596d137119c4c8824068948f50c015";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # moonbit-overlay = {

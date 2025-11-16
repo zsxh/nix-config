@@ -120,7 +120,7 @@ in
       # "portaudio"
       # "mupdf"
       # "krunvm"
-      "html2markdown"
+      "llama.cpp"
     ];
 
     # `brew install --cask`

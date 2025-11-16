@@ -128,7 +128,6 @@ in
       # nix-index # Programs provided: nix-channel-index, nix-index, nix-locate
       python313Packages.huggingface-hub # Programs provided: huggingface-cli
       hurl # Command line tool that performs HTTP requests defined in a simple plain text format
-      whisper-cpp # High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model
       # unrar
       hugo # Fast and modern static website engine
       # zsh-history-to-fish
@@ -140,6 +139,8 @@ in
 
       # ai tools
       claude-code
+      whisper-cpp # High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model
+      # llama-cpp # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
 
       # gui apps
       # firefox-devedition-unwrapped

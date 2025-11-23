@@ -142,6 +142,9 @@ in
       whisper-cpp # High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model
       # llama-cpp # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
 
+      # nix tools
+      nh # https://github.com/nix-community/nh
+
       # gui apps
       # firefox-devedition-unwrapped
       # google-chrome
@@ -196,10 +199,10 @@ in
 
     # Java runtimes
     JAVA_8_HOME = "${pkgs.jdk8}";
-    JAVA_11_HOME = "${pkgs.jdk11}";
-    JAVA_17_HOME = "${pkgs.jdk17}";
-    JAVA_21_HOME = "${pkgs.jdk21}";
-    JAVA_23_HOME = "${pkgs.jdk23}";
+    # JAVA_11_HOME = "${pkgs.jdk11}";
+    # JAVA_17_HOME = "${pkgs.jdk17}";
+    # JAVA_21_HOME = "${pkgs.jdk21}";
+    JAVA_25_HOME = "${pkgs.jdk25}";
 
     # Go
     GOPROXY = "https://goproxy.cn,direct";
@@ -398,7 +401,7 @@ in
     # set JAVA_HOME
     java = {
       enable = true;
-      package = pkgs.jdk23;
+      package = pkgs.jdk25;
     };
 
     # firefox = {

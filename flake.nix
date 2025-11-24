@@ -69,6 +69,12 @@
       # $ darwin-rebuild build --flake .#macbook
       # $ nix flake update
       # $ darwin-rebuild switch --flake .#macbook
+      #
+      # Use Nix Cli helper nh
+      # $ nh darwin switch .#darwinConfigurations.macbook --update
+      # $ nh darwin switch .#darwinConfigurations.macbook --update-input emacs-overlay
+      # $ nh darwin switch .#darwinConfigurations.macbook
+      # $ NH_FLAKE=.#darwinConfigurations.macbook" nh darwin switch
       darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
         inherit specialArgs;
         modules = [

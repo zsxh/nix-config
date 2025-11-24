@@ -44,15 +44,14 @@ in
     wget
   ];
 
-  environment.variables =
-    {
-      EDITOR = "vim";
-      TIME_STYLE = "long-iso"; # ls -l 用长时间代替短时间格式
-      EMACS_APP = "/Applications/Emacs.app/Contents/MacOS";
-      PATH = "$PATH:/opt/homebrew/bin:$EMACS_APP:$EMACS_APP/bin";
-    }
-    # Set variables for you to manually install homebrew packages.
-    // homebrew_mirror_env;
+  environment.variables = {
+    EDITOR = "vim";
+    TIME_STYLE = "long-iso"; # ls -l 用长时间代替短时间格式
+    EMACS_APP = "/Applications/Emacs.app/Contents/MacOS";
+    PATH = "$PATH:/opt/homebrew/bin:$EMACS_APP:$EMACS_APP/bin";
+  }
+  # Set variables for you to manually install homebrew packages.
+  // homebrew_mirror_env;
 
   # Set environment variables for nix-darwin before run `brew bundle`.
   system.activationScripts.homebrew.text = lib.mkBefore ''
@@ -157,6 +156,7 @@ in
     ];
   };
 
+  # TODO: native way: https://mynixos.com/nixpkgs/options/services.searx
   # NOTE: https://mynixos.com/nix-darwin/options/launchd.agents.<name>
   launchd.user.agents = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     # - 加载用户级服务（agent）
@@ -169,6 +169,8 @@ in
     #   launchctl start org.nixos.searxng
     # - 停止服务
     #   launchctl stop org.nixos.searxng
+    # - 重启服务
+    #   launchctl kickstart -k "gui/$(id -u)/org.nixos.searxng"
     searxng = {
       command = "${pkgs.searxng}/bin/searxng-run";
       # environment = { ... };

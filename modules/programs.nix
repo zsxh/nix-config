@@ -85,7 +85,7 @@ in
     masApps = {
       WPS = 1443749478;
       Wechat = 836500024;
-      WeCom = 1189898970; # Wechat for Work
+      # WeCom = 1189898970; # Wechat for Work
       TecentMetting = 1484048379;
       # BaiduNetDisk = 547166701;
       Xcode = 497799835;

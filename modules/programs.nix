@@ -119,7 +119,7 @@ in
       # "portaudio"
       # "mupdf"
       # "krunvm"
-      "llama.cpp"
+      # "llama.cpp"
     ];
 
     # `brew install --cask`

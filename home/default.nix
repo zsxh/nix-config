@@ -139,8 +139,9 @@ in
 
       # ai tools
       claude-code
-      whisper-cpp # High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model
-      # llama-cpp # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
+      # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
+      # whisper-cpp
+      llama-cpp
 
       # nix tools
       nh # https://github.com/nix-community/nh

@@ -64,7 +64,7 @@ in
 
       # lsp servers
       nixd
-      nixfmt-rfc-style # nix formatter
+      nixfmt
       lua-language-server
       basedpyright
       pyright # TODO: remove

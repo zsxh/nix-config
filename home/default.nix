@@ -66,8 +66,7 @@ in
       nixd
       nixfmt
       lua-language-server
-      basedpyright
-      pyright # TODO: remove
+      ty
       ruff # python linter
       black # python formatter
       typescript-language-server

@@ -100,6 +100,7 @@ in
       # "d12frosted/emacs-plus"
       # deskflow/homebrew-tap # Deskflow is a free and open source keyboard and mouse sharing app
       # "slp/krun"
+      "farion1231/ccswitch"
     ];
 
     # `brew install`
@@ -117,7 +118,7 @@ in
       # "libvterm"
       # "tree-sitter"
       # "portaudio"
-      # "mupdf"
+      "mupdf"
       # "krunvm"
       # "llama.cpp"
     ];
@@ -134,6 +135,7 @@ in
       # "trae"
       # "cursor"
       "redis-insight"
+      "cc-switch" # from tap farion1231/ccswitch
 
       # others
       "karabiner-elements"

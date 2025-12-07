@@ -100,7 +100,6 @@ in
       mkcert
       termshark
       # iredis
-      # aider-chat
       ffmpegthumbnailer # Lightweight video thumbnailer
       epub-thumbnailer
       vips
@@ -138,6 +137,7 @@ in
 
       # ai tools
       claude-code
+      opencode
       # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
       # whisper-cpp
       llama-cpp

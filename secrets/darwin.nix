@@ -12,7 +12,7 @@
   ];
 
   environment.systemPackages = [
-    agenix.packages."${pkgs.system}".default
+    agenix.packages."${pkgs.stdenv.hostPlatform.system}".default
   ];
 
   # age recipient keys 用来解密所有的加密文件

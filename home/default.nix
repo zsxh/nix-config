@@ -211,6 +211,9 @@ in
 
     # MoonBit
     MOONBIT_INSTALL_VERSION = "nightly";
+
+    # Others
+    DYLD_FALLBACK_LIBRARY_PATH = "${pkgs.ffmpeg.lib}/lib";
   };
 
   programs = {

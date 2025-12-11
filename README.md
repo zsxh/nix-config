@@ -16,9 +16,9 @@ substituters = "https://mirrors.sustech.edu.cn/nix-channels/store" "https://mirr
 - build config
 - switch config
 
-## Others
+# Others
 
-### clash-verge-rev rules example
+## clash-verge-rev rules example
 
 ```js
 /**
@@ -43,3 +43,9 @@ function main(config) {
 ```
 
 其他规则: https://github.com/zsxh/nix-secrets/blob/main/clash-verge-rules.js
+
+## Painlessly setting up ML tooling on NixOS
+
+[](https://lavafroth.is-a.dev/post/cuda-on-nixos-without-sacrificing-ones-sanity/)
+
+

@@ -83,6 +83,7 @@ in
       (pkgs.callPackage ./pkgs/go/reftools.nix { }) # fillstruct
       (pkgs.callPackage ./pkgs/go/impl.nix { }) # impl
       # moonbit-bin.lsp.latest
+      neocmakelsp
 
       # devtools
       jq

@@ -135,6 +135,7 @@ in
       mermaid-cli # FIXME: broken mmdc
       tokei # count code
       yt-dlp
+      go-grip # Preview Markdown files locally
 
       # ai tools
       claude-code

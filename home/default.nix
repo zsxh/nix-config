@@ -45,7 +45,10 @@ in
           vterm
           # pdf-tools
           # (melpaPackages.telega) # 强制使用 melpa 版 telega，而不是 melpa-stable 版的
-          treesit-grammars.with-all-grammars
+          # treesit-grammars.with-all-grammars
+          (treesit-grammars.with-grammars (
+            p: builtins.attrValues (builtins.removeAttrs p [ "tree-sitter-razor" ])
+          ))
         ]
       ))
       # emacsPackages.telega
@@ -151,7 +154,7 @@ in
       # firefox-devedition-unwrapped
       # google-chrome
       brave
-      jetbrains.idea-community
+      # jetbrains.idea
       # kanata # TODO: cross-platform software keyboard remapper for Linux, macOS and Windows
       dbeaver-bin
     ]

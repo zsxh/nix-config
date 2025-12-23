@@ -142,6 +142,7 @@ in
 
       # ai tools
       claude-code
+      claude-code-acp
       opencode
       # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
       # whisper-cpp

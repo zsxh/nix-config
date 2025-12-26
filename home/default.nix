@@ -139,6 +139,7 @@ in
       tokei # count code
       yt-dlp
       go-grip # Preview Markdown files locally
+      eask-cli # CLI for building, runing, testing, and managing your Emacs Lisp dependencies
 
       # ai tools
       claude-code

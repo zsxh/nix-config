@@ -140,6 +140,7 @@ in
       yt-dlp
       go-grip # Preview Markdown files locally
       eask-cli # CLI for building, runing, testing, and managing your Emacs Lisp dependencies
+      witr # Command-line tool to find out why processes are running
 
       # ai tools
       claude-code
@@ -205,7 +206,7 @@ in
     HF_ENDPOINT = "https://hf-mirror.com"; # huggingface 国内镜像
 
     # Java runtimes
-    JAVA_8_HOME = "${pkgs.jdk8}";
+    # JAVA_8_HOME = "${pkgs.jdk8}";
     # JAVA_11_HOME = "${pkgs.jdk11}";
     # JAVA_17_HOME = "${pkgs.jdk17}";
     # JAVA_21_HOME = "${pkgs.jdk21}";

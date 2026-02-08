@@ -85,6 +85,7 @@ in
       gotests
       (pkgs.callPackage ./pkgs/go/reftools.nix { }) # fillstruct
       (pkgs.callPackage ./pkgs/go/impl.nix { }) # impl
+      govulncheck
       # moonbit-bin.lsp.latest
       neocmakelsp
 
@@ -152,6 +153,7 @@ in
 
       # nix tools
       nh # https://github.com/nix-community/nh
+      hydra-check # https://github.com/nix-community/hydra-check
 
       # gui apps
       # firefox-devedition-unwrapped

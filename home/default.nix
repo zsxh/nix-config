@@ -8,7 +8,7 @@
 }:
 let
   zsxh-emacs =
-    (pkgs.emacs-igc.override {
+    (pkgs.emacs-git.override {
       withNativeCompilation = false;
     }).overrideAttrs
       (old: {
@@ -45,10 +45,10 @@ in
           vterm
           # pdf-tools
           # (melpaPackages.telega) # 强制使用 melpa 版 telega，而不是 melpa-stable 版的
-          # treesit-grammars.with-all-grammars
-          (treesit-grammars.with-grammars (
-            p: builtins.attrValues (builtins.removeAttrs p [ "tree-sitter-razor" ])
-          ))
+          treesit-grammars.with-all-grammars
+          # (treesit-grammars.with-grammars (
+          #   p: builtins.attrValues (builtins.removeAttrs p [ "tree-sitter-razor" ])
+          # ))
         ]
       ))
       # emacsPackages.telega
@@ -138,7 +138,7 @@ in
       # harlequin # The SQL IDE for Your Terminal.
       mermaid-cli # FIXME: broken mmdc
       tokei # count code
-      yt-dlp
+      # yt-dlp
       go-grip # Preview Markdown files locally
       eask-cli # CLI for building, runing, testing, and managing your Emacs Lisp dependencies
       witr # Command-line tool to find out why processes are running

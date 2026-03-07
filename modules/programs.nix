@@ -131,7 +131,7 @@ in
       "orbstack"
       "wireshark"
       "visual-studio-code"
-      "cherry-studio"
+      # "cherry-studio"
       # "trae"
       # "cursor"
       "redis-insight"

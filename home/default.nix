@@ -142,6 +142,7 @@ in
       go-grip # Preview Markdown files locally
       eask-cli # CLI for building, runing, testing, and managing your Emacs Lisp dependencies
       witr # Command-line tool to find out why processes are running
+      jujutsu # aka. jj. A Git-compatible version control system
 
       # ai tools
       claude-code

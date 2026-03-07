@@ -86,7 +86,7 @@
           {
             nixpkgs.overlays = [
               # (import ./overlays/mps-overlay.nix)
-              (import ./overlays/tdlib-overlay.nix)
+              # (import ./overlays/tdlib-overlay.nix)
               emacs-overlay.overlay
               # moonbit-overlay.overlays.default
             ];

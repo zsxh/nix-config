@@ -185,6 +185,7 @@ in
       # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
       # whisper-cpp
       llama-cpp
+      pi-coding-agent
 
       # nix tools
       nh # https://github.com/nix-community/nh

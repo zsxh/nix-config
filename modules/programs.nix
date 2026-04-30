@@ -121,6 +121,7 @@ in
       "mupdf"
       # "krunvm"
       # "llama.cpp"
+      "llmfit"
     ];
 
     # `brew install --cask`
@@ -149,7 +150,7 @@ in
       # "activitywatch"
       # "capcut"
       "telegram"
-      "comfyui"
+      # "comfyui"
 
       # BlackHole is a modern macOS virtual audio loopback driver that allows applications to pass audio to other applications with zero additional latency.
       # - Restart CoreAudio with the terminal command: sudo killall -9 coreaudiod

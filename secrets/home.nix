@@ -34,12 +34,13 @@
     };
   };
 
-  home.sessionVariables = {
-    GITHUB_API_TOKEN = "$(cat ${config.age.secrets.github-api-key.path})";
-    CONTEXT7_API_KEY = "$(cat ${config.age.secrets.context7-api-key.path})";
-    EXA_API_KEY = "$(cat ${config.age.secrets.exa-api-key.path})";
-    METASO_API_KEY = "$(cat ${config.age.secrets.metaso-api-key.path})";
-    TAVILY_API_KEY = "$(cat ${config.age.secrets.tavily-api-key.path})";
-  };
+  # 由 programs.fish.shellInit 加载 环境变量，防止 shell 启动的时候文件还未创建
+  # home.sessionVariables = {
+  #   GITHUB_API_TOKEN = "$(cat ${config.age.secrets.github-api-key.path})";
+  #   CONTEXT7_API_KEY = "$(cat ${config.age.secrets.context7-api-key.path})";
+  #   EXA_API_KEY = "$(cat ${config.age.secrets.exa-api-key.path})";
+  #   METASO_API_KEY = "$(cat ${config.age.secrets.metaso-api-key.path})";
+  #   TAVILY_API_KEY = "$(cat ${config.age.secrets.tavily-api-key.path})";
+  # };
 
 }

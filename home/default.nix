@@ -319,6 +319,23 @@ in
         fish_add_path -ga ~/.orbstack/bin
         fish_add_path -ga ~/.local/bin
         fish_add_path -ga "$HOME/.moon/bin"
+
+        # 定义一个辅助函数来安全设置环境变量
+        function __load_age_secret -a var_name file_path
+            if test -f "$file_path"
+                set -gx $var_name (cat "$file_path")
+            end
+        end
+
+        # 调用函数加载所有的 Key
+        __load_age_secret GITHUB_API_TOKEN "${config.age.secrets.github-api-key.path}"
+        __load_age_secret CONTEXT7_API_KEY "${config.age.secrets.context7-api-key.path}"
+        __load_age_secret EXA_API_KEY      "${config.age.secrets.exa-api-key.path}"
+        __load_age_secret METASO_API_KEY   "${config.age.secrets.metaso-api-key.path}"
+        __load_age_secret TAVILY_API_KEY   "${config.age.secrets.tavily-api-key.path}"
+
+        # 用完后擦除函数定义，保持环境干净
+        functions -e __load_age_secret
       '';
       shellAliases = {
         ls = "ls --color=auto --group-directories-first";

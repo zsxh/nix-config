@@ -15,39 +15,6 @@ let
         # 仅移除 mps 依赖，保留 --with-mps 标志
         buildInputs = lib.lists.remove pkgs.mps (old.buildInputs or [ ]);
 
-        patches = (old.patches or [ ]) ++ [
-          (pkgs.writeText "ns-color-batch-fix.patch" ''
-Skip NS color initialization in batch mode (bug#80377 workaround)
-
-Commit b7aca342e6 moved ns_init_colors() to main() in emacs.c before
-init_lread().  At that point data-directory still holds the stale value
-from the pdump (the build sandbox path) because init_lread() has not
-recalculated it yet.  In Nix builds the sandbox path no longer exists,
-so reading rgb.txt fails and kills the process.
-
-Guard the call with !noninteractive so batch-mode byte-compilation
-(used by Nix elisp package builds) skips color init entirely.
-
-Trade-off: elisp running in --batch that queries X11 color names will
-not have the full color list.  This is acceptable because batch mode
-has no display and color queries are meaningless there.
-
-diff --git a/src/emacs.c b/src/emacs.c
-index 8e3d528dcea..01a971095bd 100644
---- a/src/emacs.c
-+++ b/src/emacs.c
-@@ -2066,7 +2066,7 @@ Using an Emacs configured with --with-x-toolkit=lucid does not have this problem
-
- #ifdef HAVE_NS
-   /* For early calls to ns_lisp_to_color or Fns_list_colors.  */
--  if (!dump_mode)
-+  if (!dump_mode && !noninteractive)
-     ns_init_colors ();
-
-   if (!noninteractive)
-          '')
-        ];
-
         # https://github.com/natrys/whisper.el/wiki/MacOS-Configuration#grant-emacs-permission-to-use-mic
         # Grant Emacs permission to use Mic
         postPatch = old.postPatch or "" + ''
@@ -75,7 +42,7 @@ in
       # emacs
       ((emacsPackagesFor zsxh-emacs).emacsWithPackages (
         epkgs: with epkgs; [
-          vterm
+          # vterm
           # pdf-tools
           # (melpaPackages.telega) # 强制使用 melpa 版 telega，而不是 melpa-stable 版的
           treesit-grammars.with-all-grammars

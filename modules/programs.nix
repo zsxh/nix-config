@@ -83,16 +83,16 @@ in
     # otherwise Apple Store will refuse to install them.
     # For details, see https://github.com/mas-cli/mas
     masApps = {
-      WPS = 1443749478;
-      Wechat = 836500024;
+      # WPS = 1443749478;
+      # Wechat = 836500024;
       # WeCom = 1189898970; # Wechat for Work
-      TecentMetting = 1484048379;
+      # TecentMetting = 1484048379;
       # BaiduNetDisk = 547166701;
-      Xcode = 497799835;
+      # Xcode = 497799835;
       # NeteaseCloudMusic = 944848654;
       # QQ = 451108668;
       # QQMusic = 595615424;
-      TickTickTodo = 966085870;
+      # TickTickTodo = 966085870;
     };
 
     taps = [
@@ -135,13 +135,13 @@ in
       # "cherry-studio"
       # "trae"
       # "cursor"
-      "redis-insight"
+      # "redis-insight"
       "cc-switch" # from tap farion1231/ccswitch
 
       # others
       "karabiner-elements"
       "scroll-reverser"
-      "firefox@developer-edition"
+      # "firefox@developer-edition"
       "clash-verge-rev"
       # "alt-tab"
       "obs"

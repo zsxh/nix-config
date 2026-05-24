@@ -57,12 +57,12 @@ in
       (emacs-lsp-booster.override { emacs = zsxh-emacs; })
 
       # program languages
-      clojure
+      # clojure
       go
-      nodejs_24
+      nodejs
       # typescript
       bun
-      python315
+      python3
       uv
 
       # lsp servers
@@ -70,13 +70,14 @@ in
       nixfmt
       lua-language-server
       ty
+      pyrefly
       ruff # python linter
       black # python formatter
       typescript-language-server
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers
       yaml-language-server
       jdt-language-server
-      clojure-lsp
+      # clojure-lsp
       gopls
       go-tools # Collection of tools and libraries for working with Go code, including linters and static analysis
       gofumpt # Stricter gofmt

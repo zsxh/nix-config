@@ -266,6 +266,16 @@ in
       };
     };
 
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = username;
+          email = "bnbvbchen@gmail.com";
+        };
+      };
+    };
+
     fish = {
       enable = true;
       interactiveShellInit = ''

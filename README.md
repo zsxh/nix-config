@@ -48,4 +48,9 @@ function main(config) {
 
 [](https://lavafroth.is-a.dev/post/cuda-on-nixos-without-sacrificing-ones-sanity/)
 
+## Pinned pkg
+
+- https://gemini.google.com/share/d533887247b5
+- Get git commit from [nixhub](https://www.nixhub.io/) or hydra-check
+
 

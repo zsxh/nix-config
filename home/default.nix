@@ -145,10 +145,14 @@ in
       eask-cli # CLI for building, runing, testing, and managing your Emacs Lisp dependencies
       witr # Command-line tool to find out why processes are running
       jujutsu # aka. jj. A Git-compatible version control system
+      
+      # protobuf tools
+      protobuf
+      buf
 
       # ai tools
       claude-code
-      claude-agent-acp
+      # claude-agent-acp
       opencode
       # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
       # whisper-cpp

@@ -76,6 +76,10 @@ in
       autoUpdate = false; # Fetch the newest stable branch of Homebrew's git repo
       upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
       cleanup = "zap"; # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
+      # FIXME: https://github.com/nix-darwin/nix-darwin/issues/1787
+      extraFlags = [
+        "--force-cleanup"
+      ];
     };
 
     # Applications to install from Mac App Store using mas.

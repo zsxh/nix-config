@@ -158,6 +158,7 @@ in
       # whisper-cpp
       # llama-cpp
       pi-coding-agent
+      codebase-memory-mcp
 
       # nix tools
       nh # https://github.com/nix-community/nh

@@ -140,7 +140,7 @@ in
       # harlequin # The SQL IDE for Your Terminal.
       mermaid-cli # FIXME: broken mmdc
       tokei # count code
-      # yt-dlp
+      yt-dlp
       go-grip # Preview Markdown files locally
       eask-cli # CLI for building, runing, testing, and managing your Emacs Lisp dependencies
       witr # Command-line tool to find out why processes are running

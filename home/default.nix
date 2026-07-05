@@ -52,9 +52,7 @@ in
         ]
       ))
       # emacsPackages.telega
-      # emacs-lsp-booster
       (emacsPackagesFor zsxh-emacs).melpaPackages.telega
-      (emacs-lsp-booster.override { emacs = zsxh-emacs; })
 
       # program languages
       # clojure

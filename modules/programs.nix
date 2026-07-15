@@ -104,6 +104,7 @@ in
       # "d12frosted/emacs-plus"
       # deskflow/homebrew-tap # Deskflow is a free and open source keyboard and mouse sharing app
       # "slp/krun"
+      "xberg-io/tap"
     ];
 
     # `brew install`
@@ -125,6 +126,7 @@ in
       # "krunvm"
       # "llama.cpp"
       "llmfit"
+      "xberg-io/tap/html-to-markdown"
     ];
 
     # `brew install --cask`

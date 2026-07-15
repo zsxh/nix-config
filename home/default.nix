@@ -74,7 +74,7 @@ in
       typescript-language-server
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers
       yaml-language-server
-      jdt-language-server
+      # jdt-language-server
       # clojure-lsp
       gopls
       go-tools # Collection of tools and libraries for working with Go code, including linters and static analysis
@@ -94,7 +94,7 @@ in
       act
       buildpack
       kubernetes-helm
-      minikube
+      # minikube
       # k3d
       k9s
       kubectl
@@ -149,12 +149,13 @@ in
       buf
 
       # ai tools
+      # TODO: [Nix packages for AI coding agents and development tools. Automatically updated daily.](https://github.com/numtide/llm-agents.nix)
       claude-code
       # claude-agent-acp
       opencode
       # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
       # whisper-cpp
-      # llama-cpp
+      llama-cpp
       pi-coding-agent
       codebase-memory-mcp
 
@@ -459,7 +460,7 @@ in
     # };
 
     mpv = {
-      enable = true;
+      enable = false;
       package = pkgs.mpv-unwrapped;
       bindings = {
         LEFT = "seek -5 exact";

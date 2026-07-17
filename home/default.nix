@@ -129,7 +129,6 @@ in
       ffmpeg
       eza # A modern replacement for ‘ls’.
       # nix-index # Programs provided: nix-channel-index, nix-index, nix-locate
-      python313Packages.huggingface-hub # Programs provided: huggingface-cli
       hurl # Command line tool that performs HTTP requests defined in a simple plain text format
       # unrar
       hugo # Fast and modern static website engine
@@ -460,7 +459,7 @@ in
     # };
 
     mpv = {
-      enable = false;
+      enable = true;
       package = pkgs.mpv-unwrapped;
       bindings = {
         LEFT = "seek -5 exact";

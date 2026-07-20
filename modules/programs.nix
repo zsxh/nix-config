@@ -127,6 +127,7 @@ in
       # "llama.cpp"
       "llmfit"
       "xberg-io/tap/html-to-markdown"
+      "lightpanda-io/browser/lightpanda" # Lightpanda: the headless browser designed for AI and automation
     ];
 
     # `brew install --cask`

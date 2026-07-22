@@ -49,6 +49,7 @@ in
           # (treesit-grammars.with-grammars (
           #   p: builtins.attrValues (builtins.removeAttrs p [ "tree-sitter-razor" ])
           # ))
+          jupyter
         ]
       ))
       # emacsPackages.telega
@@ -425,7 +426,7 @@ in
 
     # FIXME: https://github.com/NixOS/nixpkgs/issues/507531
     direnv = {
-      enable = false;
+      enable = true;
       nix-direnv.enable = true;
       stdlib = ''
         layout_uv() {

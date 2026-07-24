@@ -397,6 +397,8 @@ in
         # set -g status 2
         # set -g status-format[1] '[#(tmux ls -F "##S##{?session_attached,*,}" | tr "\n" " " | sed "s/ $//" )]'
 
+        set -g extended-keys always
+
         # 绑定快捷键
         bind c new-window -c "#{pane_current_path}"
         bind / split-window -h -c "#{pane_current_path}"
@@ -421,6 +423,8 @@ in
               bind-key -T copy-mode-vi Enter send -X copy-pipe "xclip -i -selection clipboard"
             ''
         }
+
+        bind R source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded!"
       '';
     };
 

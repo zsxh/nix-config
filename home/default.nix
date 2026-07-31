@@ -8,7 +8,7 @@
 }:
 let
   zsxh-emacs =
-    (pkgs.emacs-git.override {
+    (pkgs.emacs-igc.override {
       withNativeCompilation = false;
     }).overrideAttrs
       (old: {
@@ -49,7 +49,7 @@ in
           # (treesit-grammars.with-grammars (
           #   p: builtins.attrValues (builtins.removeAttrs p [ "tree-sitter-razor" ])
           # ))
-          jupyter
+          # jupyter
         ]
       ))
       # emacsPackages.telega

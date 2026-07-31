@@ -43,6 +43,11 @@
       # url = "github:ryan4yin/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # [Nix packages for AI coding agents and development tools. Automatically updated daily.](https://github.com/numtide/llm-agents.nix)
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
     # my private secrets, it's a private repository
     mysecrets = {
       url = "git+ssh://git@github.com/zsxh/nix-secrets.git?shallow=1";
@@ -56,6 +61,7 @@
       home-manager,
       emacs-overlay,
       # moonbit-overlay,
+      llm-agents,
       ...
     }:
     let
@@ -89,6 +95,7 @@
               # (import ./overlays/tdlib-overlay.nix)
               emacs-overlay.overlay
               # moonbit-overlay.overlays.default
+              llm-agents.overlays.shared-nixpkgs
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

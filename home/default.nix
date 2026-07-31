@@ -148,17 +148,6 @@ in
       protobuf
       buf
 
-      # ai tools
-      # TODO: [Nix packages for AI coding agents and development tools. Automatically updated daily.](https://github.com/numtide/llm-agents.nix)
-      claude-code
-      # claude-agent-acp
-      opencode
-      # FIXME: https://github.com/ggml-org/llama.cpp/issues/11303
-      # whisper-cpp
-      llama-cpp
-      pi-coding-agent
-      codebase-memory-mcp
-
       # nix tools
       nh # https://github.com/nix-community/nh
       hydra-check # https://github.com/nix-community/hydra-check
@@ -192,6 +181,25 @@ in
     ++ [
       # self-hosted
       searxng # A privacy-respecting, hackable metasearch engine
+    ]
+    ++ [
+      # ai tools
+      llama-cpp
+      codebase-memory-mcp
+      claude-code
+      # claude-agent-acp
+      codex
+      # codex-acp
+      pi-coding-agent
+      opencode
+
+      # ai tools from llm-agents.nix
+      # llm-agents.claude-code
+      # llm-agents.claude-agent-acp
+      # llm-agents.codex
+      # llm-agents.codex-acp
+      # llm-agents.opencode
+      # llm-agents.pi
     ];
 
   home.file = {

@@ -399,13 +399,17 @@ in
       extraConfig = ''
         # 设置状态栏
         # https://unix.stackexchange.com/questions/308094/print-a-256-color-test-pattern-in-the-terminal
+        # [The Perfect Tmux Statusbar: Custom Theming and Styling | Tmux from Scratch Part 2](https://www.youtube.com/watch?v=WwRljAR9N30)
+        # https://github.com/jakobwesthoff/tmux-from-scratch
         set -g automatic-rename on
         set -g status-left "#[fg=#F5F5DC,bg=#808000,bold] #S #[default]"
-        set -g status-right "%Y-%m-%d %H:%M %a"
+        set -g status-right "#h %Y-%m-%d %H:%M %a"
+        # set -g status-justify centre
+        set -g status-left-length 20
         set -g window-status-current-style "bg=yellow"
-        # set -g status 2
-        # set -g status-format[1] '[#(tmux ls -F "##S##{?session_attached,*,}" | tr "\n" " " | sed "s/ $//" )]'
-
+        set -g window-status-current-format " #I:#W "
+        set -g window-status-format " #I:#W "
+        set -g window-status-separator ""
         set -g extended-keys always
 
         # 绑定快捷键

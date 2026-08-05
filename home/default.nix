@@ -402,6 +402,7 @@ in
         set -g automatic-rename on
         set -g status-left "#[fg=#F5F5DC,bg=#808000,bold] #S #[default] "
         set -g status-right "%Y-%m-%d %H:%M %a"
+        set -g window-status-current-style "bg=yellow"
         # set -g status 2
         # set -g status-format[1] '[#(tmux ls -F "##S##{?session_attached,*,}" | tr "\n" " " | sed "s/ $//" )]'
 

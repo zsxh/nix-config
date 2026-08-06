@@ -192,6 +192,7 @@ in
       # codex-acp
       pi-coding-agent
       opencode
+      herdr
 
       # ai tools from llm-agents.nix
       # llm-agents.claude-code

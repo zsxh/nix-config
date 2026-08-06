@@ -312,21 +312,42 @@ in
         fish_add_path -ga "$HOME/.moon/bin"
 
         # 定义一个辅助函数来安全设置环境变量
-        function __load_age_secret -a var_name file_path
-            if test -f "$file_path"
-                set -gx $var_name (cat "$file_path")
+        function __load_env_file -a file_path
+            if not test -f "$file_path"
+                # echo "错误: 文件不存在: $file_path" >&2
+                # return 1
+                return 0
             end
+            # 不支持行内注释
+            while read -l line
+                set line (string trim $line)
+                if test -z "$line"; or string match -q '#*' $line
+                    continue
+                end
+                set -l parts (string split -m 1 "=" -- $line)
+                set -l key (string trim $parts[1])
+                set -l value ""
+                if test (count $parts) -ge 2
+                    set value (string trim $parts[2])
+                end
+                if test -z "$key"
+                    continue
+                end
+                if string match -qr '^".*"$' $value
+                    set value (string sub -s 2 -e -1 $value)
+                else if string match -qr "^'.*'\$" $value
+                    set value (string sub -s 2 -e -1 $value)
+                end
+                set -gx $key $value
+            end < "$file_path"
         end
 
         # 调用函数加载所有的 Key
-        __load_age_secret GITHUB_API_TOKEN "${config.age.secrets.github-api-key.path}"
-        __load_age_secret CONTEXT7_API_KEY "${config.age.secrets.context7-api-key.path}"
-        __load_age_secret EXA_API_KEY      "${config.age.secrets.exa-api-key.path}"
-        __load_age_secret METASO_API_KEY   "${config.age.secrets.metaso-api-key.path}"
-        __load_age_secret TAVILY_API_KEY   "${config.age.secrets.tavily-api-key.path}"
+        __load_env_file "${config.age.secrets.secrets-env.path}"
 
         # 用完后擦除函数定义，保持环境干净
-        functions -e __load_age_secret
+        functions -e __load_env_file
+
       '';
       shellAliases = {
         ls = "ls --color=auto --group-directories-first";

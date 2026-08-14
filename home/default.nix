@@ -8,7 +8,7 @@
 }:
 let
   zsxh-emacs =
-    (pkgs.emacs-igc.override {
+    (pkgs.emacs-git.override {
       withNativeCompilation = false;
     }).overrideAttrs
       (old: {
@@ -143,6 +143,7 @@ in
       eask-cli # CLI for building, runing, testing, and managing your Emacs Lisp dependencies
       witr # Command-line tool to find out why processes are running
       jujutsu # aka. jj. A Git-compatible version control system
+      hyperfine # A command-line benchmarking tool
 
       # protobuf tools
       protobuf
@@ -193,6 +194,8 @@ in
       pi-coding-agent
       opencode
       herdr
+
+      # TODO: [obscura, headless browser for AI agents](https://github.com/h4ckf0r0day/obscura)
 
       # ai tools from llm-agents.nix
       # llm-agents.claude-code

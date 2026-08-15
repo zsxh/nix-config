@@ -76,10 +76,7 @@ in
       autoUpdate = false; # Fetch the newest stable branch of Homebrew's git repo
       upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
       cleanup = "zap"; # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
-      # FIXME: https://github.com/nix-darwin/nix-darwin/issues/1787
-      extraFlags = [
-        "--force-cleanup"
-      ];
+      extraFlags = [];
     };
 
     # Applications to install from Mac App Store using mas.
@@ -104,7 +101,15 @@ in
       # "d12frosted/emacs-plus"
       # deskflow/homebrew-tap # Deskflow is a free and open source keyboard and mouse sharing app
       # "slp/krun"
-      "xberg-io/tap"
+      {
+        name = "xberg-io/tap";
+        trusted = true;
+      }
+      {
+        name = "ddalcu/mlx-serve";
+        clone_target = "https://github.com/ddalcu/mlx-serve";
+        trusted = true;
+      }
     ];
 
     # `brew install`
@@ -133,7 +138,7 @@ in
     # `brew install --cask`
     casks = [
       # dev tools
-      "lm-studio"
+      # "lm-studio"
       "raycast"
       "orbstack"
       "wireshark-app"
@@ -143,6 +148,7 @@ in
       # "cursor"
       # "redis-insight"
       "cc-switch"
+      "mlx-core"
 
       # others
       "karabiner-elements"

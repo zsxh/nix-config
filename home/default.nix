@@ -110,6 +110,7 @@ in
       vips
       mediainfo # Supplies technical and tag information about a video or audio file
       imagemagick # Software suite to create, edit, compose, or convert bitmap images
+      libsixel # SIXEL library for console graphics, and converter programs, Roughly 2.2x smaller payloads and ~10x faster than ImageMagick
       poppler-utils # PDF rendering library
       _7zz # Programs provided: 7zz, Command line archiver utility
       fd
@@ -193,7 +194,7 @@ in
       # codex-acp
       pi-coding-agent
       opencode
-      herdr
+      herdr # Agent multiplexer that lives in your terminal
 
       # TODO: [obscura, headless browser for AI agents](https://github.com/h4ckf0r0day/obscura)
 

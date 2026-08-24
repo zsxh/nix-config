@@ -357,9 +357,11 @@ in
         ls = "ls --color=auto --group-directories-first";
         ll = "ls -lh";
         la = "ls -a";
-        mg = "mvn archetype:generate";
-        shttp = "export http_proxy=http://127.0.0.1:1080/; export https_proxy=http://127.0.0.1:1080/;";
-        uhttp = "unset http_proxy; unset https_proxy;";
+        pn = "pnpm";
+        pnx = "pnpm dlx";
+        # mg = "mvn archetype:generate";
+        # shttp = "export http_proxy=http://127.0.0.1:1080/; export https_proxy=http://127.0.0.1:1080/;";
+        # uhttp = "unset http_proxy; unset https_proxy;";
       };
     };
 

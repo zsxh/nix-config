@@ -186,7 +186,7 @@ in
     ]
     ++ [
       # ai tools
-      llama-cpp
+      # llama-cpp
       codebase-memory-mcp
       claude-code
       # claude-agent-acp
@@ -199,6 +199,7 @@ in
       # TODO: [obscura, headless browser for AI agents](https://github.com/h4ckf0r0day/obscura)
 
       # ai tools from llm-agents.nix
+      llm-agents.dsh
       # llm-agents.claude-code
       # llm-agents.claude-agent-acp
       # llm-agents.codex

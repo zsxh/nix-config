@@ -171,8 +171,11 @@ in
     ];
   };
 
-  # TODO: native way: https://mynixos.com/nixpkgs/options/services.searx
-  # NOTE: https://mynixos.com/nix-darwin/options/launchd.agents.<name>
+  # NOTE: NIXOS
+  #   - https://mynixos.com/nixpkgs/options/services.searx
+  #   - https://wiki.nixos.org/wiki/SearXNG
+  # NOTE: MacOS
+  #   - https://mynixos.com/nix-darwin/options/launchd.agents.<name>
   launchd.user.agents = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     # - 加载用户级服务（agent）
     #   launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/org.example.myapp.plist

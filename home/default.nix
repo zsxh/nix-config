@@ -145,6 +145,7 @@ in
       witr # Command-line tool to find out why processes are running
       jujutsu # aka. jj. A Git-compatible version control system
       hyperfine # A command-line benchmarking tool
+      graphviz
 
       # protobuf tools
       protobuf
@@ -161,13 +162,15 @@ in
       # jetbrains.idea
       # kanata # TODO: cross-platform software keyboard remapper for Linux, macOS and Windows
       dbeaver-bin
+      # kotatogram-desktop
     ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       # NOTE: Add "nix" to the "allow full disk access" security list if the build fails
       # with 'Operation not permitted' for some packages
-      utm # virtual machine
-      vfkit # Simple command line tool to start VMs through the macOS Virtualization framework
+      # utm # virtual machine
+      # vfkit # Simple command line tool to start VMs through the macOS Virtualization framework
       # lima
+      # tart # macOS and Linux VMs on Apple Silicon to use in CI and other automations
     ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       wireshark
@@ -195,8 +198,7 @@ in
       pi-coding-agent
       opencode
       herdr # Agent multiplexer that lives in your terminal
-
-      # TODO: [obscura, headless browser for AI agents](https://github.com/h4ckf0r0day/obscura)
+      obscura # Headless browser for AI agents and web scraping
 
       # ai tools from llm-agents.nix
       llm-agents.dsh

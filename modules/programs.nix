@@ -149,6 +149,7 @@ in
       # "redis-insight"
       "cc-switch"
       "mlx-core"
+      "open-design"
 
       # others
       "karabiner-elements"

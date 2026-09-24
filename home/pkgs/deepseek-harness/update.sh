@@ -1,0 +1,149 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Update script for the `deepseek-harness` (dsh) package.
+#
+# Unlike static binary packages, dsh is built from an npm tarball via
+# buildNpmPackage, so an update must:
+#   1. bump `version` in hashes.json
+#   2. regenerate package-lock.json for the new version
+#   3. recompute sourceHash (the npm tarball hash)
+#
+# After using importNpmLock, no need to maintain npmDepsHash.
+
+usage() {
+  echo "Usage: $(basename "$0") [version]" >&2
+  echo "       $(basename "$0") -f|--force <version>" >&2
+  echo "       $(basename "$0") -t|--tag <npm-dist-tag> [-f|--force]" >&2
+}
+
+force=false
+tag_given=false
+dist_tag=latest
+version=''
+
+latest_version() {
+  curl -fsSL "https://registry.npmjs.org/@deepseek-ai%2fdsh/$dist_tag" \
+    | sed -n 's/.*"version": *"\([^"]*\)".*/\1/p'
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -f|--force)
+      force=true
+      ;;
+    -t|--tag)
+      [ -n "${2:-}" ] || { usage; exit 1; }
+      tag_given=true
+      dist_tag="$2"
+      shift
+      ;;
+    -*)
+      usage
+      exit 1
+      ;;
+    *)
+      [ -z "$version" ] || { usage; exit 1; }
+      version="$1"
+      ;;
+  esac
+  shift
+done
+
+if [ "$tag_given" = true ] && [ -n "$version" ]; then
+  echo "Error: -t <tag> cannot be combined with an explicit version" >&2
+  exit 1
+fi
+if [ "$force" = true ] && [ "$tag_given" = false ] && [ -z "$version" ]; then
+  usage
+  exit 1
+fi
+case "$dist_tag" in
+  ''|*[!0-9A-Za-z._-]*)
+    echo "Error: tag must only contain letters, numbers, dots, underscores, or hyphens" >&2
+    exit 1
+    ;;
+esac
+if [ -z "$version" ]; then
+  version="$(latest_version)" || true
+  if [ -z "$version" ]; then
+    echo "Error: failed to resolve npm dist-tag '$dist_tag' on registry.npmjs.org" >&2
+    exit 1
+  fi
+fi
+
+case "$version" in
+  ''|*[!0-9A-Za-z._-]*)
+    echo "Error: version must only contain letters, numbers, dots, underscores, or hyphens" >&2
+    exit 1
+    ;;
+esac
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+hashes_json="$script_dir/hashes.json"
+lockfile="$script_dir/package-lock.json"
+readme="$script_dir/README.md"
+readme_zh="$script_dir/README_zh_CN.md"
+current_version="$(sed -n 's/.*"version": *"\([^"]*\)",/\1/p' "$hashes_json")"
+repo_root="$(cd -- "$script_dir" && git rev-parse --show-toplevel 2>/dev/null || echo "$script_dir/../../..")"
+
+update_readme_versions() {
+  sed -i -E "s|Current version: [0-9][^ ]*\.|Current version: $version.|" "$readme"
+  sed -i -E "s|当前版本：[^。]+。|当前版本：$version。|" "$readme_zh"
+}
+
+src_url="https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-${version}.tgz"
+
+if [ "$force" = false ] && [ "$current_version" = "$version" ]; then
+  update_readme_versions
+  echo "deepseek-harness is already at $version"
+  exit 0
+fi
+
+work="$(mktemp -d)"
+trap 'rm -rf "$work"' EXIT
+
+# --- 1. prefetch the npm tarball for sourceHash ---
+echo "Prefetching npm tarball hash..."
+src_hash="$(nix --extra-experimental-features 'nix-command flakes' store prefetch-file --json "$src_url" \
+  | sed -n 's/.*"hash": *"\([^"]*\)".*/\1/p')"
+if [ -z "$src_hash" ]; then
+  echo "Error: failed to extract sourceHash for $src_url" >&2
+  exit 1
+fi
+
+# --- 2. regenerate package-lock.json for the new version ---
+# Use a private npm cache so stale/root-owned ~/.npm does not interfere.
+echo "Regenerating package-lock.json (this fetches registry metadata)..."
+mkdir -p "$work/pkg" "$work/npmcache"
+curl -fsSL "$src_url" -o "$work/dsh.tgz"
+tar -xzf "$work/dsh.tgz" -C "$work/pkg" --strip-components=1
+(
+  cd "$work/pkg"
+  # Resolve the lockfile for production dependencies only: dsh lists
+  # unreleased workspace packages among its devDependencies (e.g.
+  # @deepseek-ai/dsh-experimental-agent-team in 0.1.2-alpha.5 was never
+  # published to npm), which makes `npm install --package-lock-only` fail
+  # with E404. The build (dontNpmBuild = true) never needs devDependencies;
+  # package.nix strips them from the source manifest to keep `npm ci` in
+  # sync with this lockfile.
+  node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("package.json"));delete p.devDependencies;fs.writeFileSync("package.json",JSON.stringify(p,null,2)+"\n")'
+  npm install --package-lock-only --ignore-scripts --no-audit --no-fund \
+    --cache "$work/npmcache"
+)
+cp "$work/pkg/package-lock.json" "$lockfile"
+
+# --- 3. write version + sourceHash (npmDepsHash is no longer needed) ---
+cat > "$hashes_json" <<EOF
+{
+  "version": "$version",
+  "sourceHash": "$src_hash"
+}
+EOF
+
+update_readme_versions
+
+echo "Updated deepseek-harness to $version"
+echo "sourceHash: $src_hash"
+echo
+echo "Build with: nix build '.#deepseek-harness'"

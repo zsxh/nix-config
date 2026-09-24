@@ -45,10 +45,10 @@ in
           # vterm
           # pdf-tools
           # (melpaPackages.telega) # 强制使用 melpa 版 telega，而不是 melpa-stable 版的
-          treesit-grammars.with-all-grammars
-          # (treesit-grammars.with-grammars (
-          #   p: builtins.attrValues (builtins.removeAttrs p [ "tree-sitter-razor" ])
-          # ))
+          # treesit-grammars.with-all-grammars
+          (treesit-grammars.with-grammars (
+            p: builtins.attrValues (removeAttrs p [ "tree-sitter-cuda" ])
+          ))
           # jupyter
         ]
       ))
@@ -201,13 +201,15 @@ in
       obscura # Headless browser for AI agents and web scraping
 
       # ai tools from llm-agents.nix
-      llm-agents.dsh
+      # llm-agents.dsh
       # llm-agents.claude-code
       # llm-agents.claude-agent-acp
       # llm-agents.codex
       # llm-agents.codex-acp
       # llm-agents.opencode
       # llm-agents.pi
+
+      (pkgs.callPackage ./pkgs/deepseek-harness/package.nix { })
     ];
 
   home.file = {
@@ -250,6 +252,7 @@ in
     DYLD_FALLBACK_LIBRARY_PATH = "${pkgs.ffmpeg.lib}/lib";
   };
 
+  # NOTE: https://mynixos.com/home-manager/options/programs.mise
   programs = {
     git = {
       enable = true;

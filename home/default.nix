@@ -124,6 +124,7 @@ in
       fastfetch
       git-extras # GIT utilities -- repo summary, repl, changelog population, author commit percentages and more
       git-lfs # Git extension for versioning large files
+      difftastic
       age # Modern encryption tool with small explicit keys
       yazi # terminal file manager written in Rust
       lazygit # A simple terminal UI for git commands

@@ -83,6 +83,7 @@
       # $ NH_FLAKE=.#darwinConfigurations.macbook" nh darwin switch
       darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
         inherit specialArgs;
+        # TODO: [Declare Mac's System Settings](https://github.com/sushydev/nix-plist-manager)
         modules = [
           ./secrets/darwin.nix
           ./modules

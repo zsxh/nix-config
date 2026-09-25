@@ -82,14 +82,15 @@ esac
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 hashes_json="$script_dir/hashes.json"
 lockfile="$script_dir/package-lock.json"
-readme="$script_dir/README.md"
-readme_zh="$script_dir/README_zh_CN.md"
+readme="$script_dir/readme.md"
 current_version="$(sed -n 's/.*"version": *"\([^"]*\)",/\1/p' "$hashes_json")"
 repo_root="$(cd -- "$script_dir" && git rev-parse --show-toplevel 2>/dev/null || echo "$script_dir/../../..")"
 
 update_readme_versions() {
-  sed -i -E "s|Current version: [0-9][^ ]*\.|Current version: $version.|" "$readme"
-  sed -i -E "s|当前版本：[^。]+。|当前版本：$version。|" "$readme_zh"
+  local tmp
+  tmp="$(mktemp)"
+  sed -E "s|当前版本：[^。]+。|当前版本：${version}。|" "$readme" > "$tmp"
+  mv "$tmp" "$readme"
 }
 
 src_url="https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-${version}.tgz"
@@ -145,5 +146,3 @@ update_readme_versions
 
 echo "Updated deepseek-harness to $version"
 echo "sourceHash: $src_hash"
-echo
-echo "Build with: nix build '.#deepseek-harness'"

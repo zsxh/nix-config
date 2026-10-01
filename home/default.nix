@@ -190,16 +190,18 @@ in
     ]
     ++ [
       # ai tools
+      herdr # Agent multiplexer that lives in your terminal
+      obscura # Headless browser for AI agents and web scraping
+      rtk # High-performance CLI proxy that cuts up to 90% of the bash output your agent reads
       # llama-cpp
       codebase-memory-mcp
+
       claude-code
       # claude-agent-acp
       codex
       # codex-acp
       pi-coding-agent
       opencode
-      herdr # Agent multiplexer that lives in your terminal
-      obscura # Headless browser for AI agents and web scraping
 
       # ai tools from llm-agents.nix
       # llm-agents.dsh

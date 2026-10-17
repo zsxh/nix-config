@@ -148,7 +148,7 @@ in
       # "cursor"
       # "redis-insight"
       "cc-switch"
-      "mlx-core"
+      "mlx-serve"
       "open-design"
 
       # others

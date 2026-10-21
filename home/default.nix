@@ -147,6 +147,7 @@ in
       jujutsu # aka. jj. A Git-compatible version control system
       hyperfine # A command-line benchmarking tool
       graphviz
+      cloudflared # Client for various Cloudflare services, including Tunnel, Access, and DNS over HTTPS
 
       # protobuf tools
       protobuf
